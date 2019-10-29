@@ -40,22 +40,22 @@ namespace MapMockup1
 
             if (input.IsKeyDown(Key.W))
             {
-                yCamera -= 5.0f;
+                yCamera += 5.0f;
             }
 
             if (input.IsKeyDown(Key.S))
             {
-                yCamera += 5.0f;
+                yCamera -= 5.0f;
             }
 
             if (input.IsKeyDown(Key.D))
             {
-                xCamera += 5.0f;
+                xCamera -= 5.0f;
             }
 
             if (input.IsKeyDown(Key.A))
             {
-                xCamera -= 5.0f;
+                xCamera += 5.0f;
             }
         }
 
