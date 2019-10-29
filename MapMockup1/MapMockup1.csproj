@@ -58,6 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="hovertile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="tile.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

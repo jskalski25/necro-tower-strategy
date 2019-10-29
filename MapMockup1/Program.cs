@@ -12,9 +12,12 @@ namespace MapMockup1
     {
         static private GameWindow window;
         static private Texture texture;
+        static private Texture hover;
         static private Map map;
         static private float xCamera;
         static private float yCamera;
+
+        static public Vector2 mousePos;
 
         static void Main(string[] args)
         {
@@ -28,10 +31,17 @@ namespace MapMockup1
             window.UpdateFrame += Update;
             window.RenderFrame += Render;
             window.KeyDown += HandleKeyDown;
+            window.MouseMove += HandleMouse;
             window.Resize += HandleResize;
             window.Unload += FreeMedia;
 
             window.Run(60.0);
+        }
+
+        private static void HandleMouse(object sender, MouseMoveEventArgs e)
+        {
+            mousePos.X = e.X;
+            mousePos.Y = e.Y;
         }
 
         private static void Update(object sender, FrameEventArgs e)
@@ -67,8 +77,9 @@ namespace MapMockup1
         private static void LoadMedia(object sender, EventArgs e)
         {
             texture = new Texture("tile.png");
+            hover = new Texture("hovertile.png");
 
-            map = new Map(11, texture);
+            map = new Map(11, texture, hover);
         }
 
         private static void HandleKeyDown(object sender, KeyboardKeyEventArgs e)
