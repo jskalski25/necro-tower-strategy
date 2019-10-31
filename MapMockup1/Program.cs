@@ -68,7 +68,7 @@ namespace MapMockup1
                 xCamera += 5.0f;
             }
 
-            /*if (mousePos.X < window.Width * 0.1f)
+            if (mousePos.X < window.Width * 0.1f)
             {
                 xCamera += 5.0f;
             }
@@ -86,7 +86,7 @@ namespace MapMockup1
             if (mousePos.Y < window.Height * 0.1f)
             {
                 yCamera += 5.0f;
-            }*/
+            }
         }
 
         private static void FreeMedia(object sender, EventArgs e)
