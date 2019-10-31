@@ -72,6 +72,7 @@ namespace MapMockup1
         private static void FreeMedia(object sender, EventArgs e)
         {
             GL.DeleteTexture(texture.TextureID);
+            GL.DeleteTexture(hover.TextureID);
         }
 
         private static void LoadMedia(object sender, EventArgs e)
