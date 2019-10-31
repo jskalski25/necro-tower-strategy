@@ -68,22 +68,22 @@ namespace MapMockup1
                 xCamera += 5.0f;
             }
 
-            if (mousePos.X < window.Width * 0.1f)
+            if (mousePos.X < Math.Min(window.Width * 0.05f, 20.0f))
             {
                 xCamera += 5.0f;
             }
 
-            if (mousePos.X > window.Width * 0.9f)
+            if (mousePos.X > Math.Max(window.Width * 0.95f, window.Width - 20.0f))
             {
                 xCamera -= 5.0f;
             }
 
-            if (mousePos.Y > window.Height * 0.9f)
+            if (mousePos.Y > Math.Max(window.Height * 0.95f, window.Height - 20.0f))
             {
                 yCamera -= 5.0f;
             }
 
-            if (mousePos.Y < window.Height * 0.1f)
+            if (mousePos.Y < Math.Min(window.Height * 0.05f, 20.0f))
             {
                 yCamera += 5.0f;
             }
@@ -108,6 +108,17 @@ namespace MapMockup1
             if (e.Key == Key.Escape)
             {
                 window.Close();
+            }
+            else if (e.Key == Key.F4)
+            {
+                if (window.WindowState == WindowState.Fullscreen)
+                {
+                    window.WindowState = WindowState.Normal;
+                }
+                else
+                {
+                    window.WindowState = WindowState.Fullscreen;
+                }
             }
         }
 
