@@ -28,29 +28,29 @@ namespace MapMockup1
             Width = texture.Width * ((zCount + 1) / 2.0f);
         }
 
-        public void Render(float x, float y)
+        public void Render(float x, float y, float scale)
         {
-            float extraOffset = ((side - 1) * texture.Width / 2);
+            float extraOffset = ((side - 1) * texture.Width * scale / 2);
 
             for (int i = 0; i < area; ++i)
             {
                 int xOffset = i % side;
                 int yOffset = i / side;
 
-                Vector2 offset = Translate(xOffset, yOffset, texture.Width, texture.Height);
+                Vector2 offset = Translate(xOffset, yOffset, texture.Width * scale, texture.Height * scale);
 
                 /* test code */
-                offset = BackTranslate(offset.X, offset.Y, texture.Width, texture.Height);
-                offset = Translate(offset.X, offset.Y, texture.Width, texture.Height);
+                //offset = BackTranslate(offset.X, offset.Y, texture.Width, texture.Height);
+                //offset = Translate(offset.X, offset.Y, texture.Width, texture.Height);
 
-                texture.Render(offset.X + extraOffset + x, offset.Y + y);
+                texture.Render(offset.X + extraOffset + x, offset.Y + y, scale);
             }
 
-            Vector2 floorPos = BackTranslate(Program.mousePos.X - extraOffset - x - texture.Width / 2, Program.mousePos.Y - y - texture.Height / 2, texture.Width, texture.Height);
+            Vector2 floorPos = BackTranslate(Program.mousePos.X - extraOffset - x - texture.Width * scale / 2, Program.mousePos.Y - y - texture.Height * scale / 2, texture.Width * scale, texture.Height * scale);
             if (0 <= floorPos.X && floorPos.X <= side - 1 && 0 <= floorPos.Y && floorPos.Y <= side - 1)
             {
-                Vector2 actualPos = Translate(floorPos.X, floorPos.Y, hover.Width, hover.Height);
-                hover.Render(actualPos.X + extraOffset + x, actualPos.Y + y);
+                Vector2 actualPos = Translate(floorPos.X, floorPos.Y, hover.Width * scale, hover.Height * scale);
+                hover.Render(actualPos.X + extraOffset + x, actualPos.Y + y, scale);
             }
         }
 

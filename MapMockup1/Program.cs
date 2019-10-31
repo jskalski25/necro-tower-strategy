@@ -115,7 +115,8 @@ namespace MapMockup1
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
 
-            map.Render(xCamera + window.Width / 2 - map.Width / 2, yCamera + window.Height / 2 - map.Height / 2);
+            float scale = 4.0f;
+            map.Render(xCamera + window.Width / 2 - map.Width * scale / 2, yCamera + window.Height / 2 - map.Height * scale / 2, scale);
 
             window.Context.SwapBuffers();
         }

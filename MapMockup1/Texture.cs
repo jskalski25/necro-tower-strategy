@@ -30,9 +30,10 @@ namespace MapMockup1
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+            GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
         }
 
-        public void Render(float x, float y)
+        public void Render(float x, float y, float scale)
         {
             GL.LoadIdentity();
             GL.Translate(x, y, 0.0f);
@@ -41,9 +42,9 @@ namespace MapMockup1
 
             GL.Begin(PrimitiveType.Quads);
                 GL.TexCoord2(0.0f, 0.0f); GL.Vertex2(0.0f, 0.0f);
-                GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(Width, 0.0f);
-                GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(Width, Height);
-                GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(0.0f, Height);
+                GL.TexCoord2(1.0f, 0.0f); GL.Vertex2(Width * scale, 0.0f);
+                GL.TexCoord2(1.0f, 1.0f); GL.Vertex2(Width * scale, Height * scale);
+                GL.TexCoord2(0.0f, 1.0f); GL.Vertex2(0.0f, Height * scale);
             GL.End();
         }
     }
