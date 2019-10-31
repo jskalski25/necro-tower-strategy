@@ -67,6 +67,26 @@ namespace MapMockup1
             {
                 xCamera += 5.0f;
             }
+
+            /*if (mousePos.X < window.Width * 0.1f)
+            {
+                xCamera += 5.0f;
+            }
+
+            if (mousePos.X > window.Width * 0.9f)
+            {
+                xCamera -= 5.0f;
+            }
+
+            if (mousePos.Y > window.Height * 0.9f)
+            {
+                yCamera -= 5.0f;
+            }
+
+            if (mousePos.Y < window.Height * 0.1f)
+            {
+                yCamera += 5.0f;
+            }*/
         }
 
         private static void FreeMedia(object sender, EventArgs e)
@@ -124,6 +144,10 @@ namespace MapMockup1
         private static void HandleResize(object sender, EventArgs e)
         {
             GL.Viewport(0, 0, window.Width, window.Height);
+
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+            GL.Ortho(0.0, window.Width, window.Height, 0.0, 1.0, -1.0);
         }
     }
 }
