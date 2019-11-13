@@ -36,8 +36,6 @@ namespace Project5
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            _shader.ModelviewMatrix = Matrix4.Identity;
-
             _quad.Render(50.0f, 50.0f);
 
             Context.SwapBuffers();

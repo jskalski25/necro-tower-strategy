@@ -100,13 +100,13 @@ namespace Project5
 
         public void Render(float x, float y)
         {
-
             GL.BindVertexArray(_vertexArrayObject);
 
             GL.BindTexture(TextureTarget.Texture2D, TextureID);
 
             _shader.Bind();
 
+            _shader.ModelviewMatrix = Matrix4.Identity;
             _shader.ModelviewMatrix = Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)) * _shader.ModelviewMatrix;
             _shader.UpdateModelview();
 
