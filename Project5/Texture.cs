@@ -98,7 +98,7 @@ namespace Project5
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
         }
 
-        public void Render(float x, float y)
+        public void Render(float x, float y, Vector3? scale = null)
         {
             GL.BindVertexArray(_vertexArrayObject);
 
@@ -108,6 +108,12 @@ namespace Project5
 
             _shader.ModelviewMatrix = Matrix4.Identity;
             _shader.ModelviewMatrix = Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)) * _shader.ModelviewMatrix;
+
+            if (scale != null)
+            {
+                _shader.ModelviewMatrix = Matrix4.CreateScale((Vector3)scale);
+            }
+
             _shader.UpdateModelview();
 
             GL.DrawElements(PrimitiveType.TriangleFan, _indices.Length, DrawElementsType.UnsignedInt, 0);
