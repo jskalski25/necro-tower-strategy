@@ -11,6 +11,7 @@ namespace Project5
         public readonly int ProgramID;
 
         public readonly int VertexLocation;
+        public readonly int TexCoordLocation;
 
         public Matrix4 ProjectionMatrix;
         public Matrix4 ModelviewMatrix;
@@ -43,6 +44,7 @@ namespace Project5
             GL.DeleteShader(fragmentShader);
 
             VertexLocation = GL.GetAttribLocation(ProgramID, "aPosition");
+            TexCoordLocation = GL.GetAttribLocation(ProgramID, "aTexCoord");
 
             ProjectionMatrixLocation = GL.GetUniformLocation(ProgramID, "uProjectionMatrix");
             ModelviewMatrixLocation = GL.GetUniformLocation(ProgramID, "uModelviewMatrix");

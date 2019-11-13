@@ -13,7 +13,7 @@ namespace Project5
     class Window : GameWindow
     {
         private Shader _shader;
-        private Quad _quad;
+        private Texture _quad;
 
         public Window() : base(800, 600, GraphicsMode.Default, "Hello, World!")
         {
@@ -45,7 +45,7 @@ namespace Project5
 
         private void LoadMedia(object sender, EventArgs e)
         {
-            _quad = new Quad(100.0f, 100.0f);
+            _quad = new Texture("image.png");
         }
 
         private void LoadShaders(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace Project5
             _shader.ModelviewMatrix = Matrix4.Identity;
             _shader.UpdateModelview();
 
-            Quad.SetShader(_shader);
+            Texture.SetShader(_shader);
         }
 
         private void InitGL(object sender, EventArgs e)
