@@ -1,21 +1,22 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
-namespace Project4
+namespace Project5
 {
     class Shader
     {
         public readonly int ProgramID;
 
-        private readonly int _vertexLocation;
+        public readonly int VertexLocation;
 
-        private readonly int _projectionMatrixLocation;
-        private readonly int _modelviewMatrixLocation;
+        public Matrix4 ProjectionMatrix;
+        public Matrix4 ModelviewMatrix;
 
-        private Matrix4 _projectionMatrix;
-        private Matrix4 _modelviewMatrix;
+        public readonly int ProjectionMatrixLocation;
+        public readonly int ModelviewMatrixLocation;
 
         public Shader(string vertexPath, string fragmentPath)
         {
@@ -41,10 +42,10 @@ namespace Project4
             GL.DeleteShader(vertexShader);
             GL.DeleteShader(fragmentShader);
 
-            _vertexLocation = GL.GetAttribLocation(ProgramID, "aPosition");
+            VertexLocation = GL.GetAttribLocation(ProgramID, "aPosition");
 
-            _projectionMatrixLocation = GL.GetUniformLocation(ProgramID, "uProjectionMatrix");
-            _modelviewMatrixLocation = GL.GetUniformLocation(ProgramID, "uModelviewMatrix");
+            ProjectionMatrixLocation = GL.GetUniformLocation(ProgramID, "uProjectionMatrix");
+            ModelviewMatrixLocation = GL.GetUniformLocation(ProgramID, "uModelviewMatrix");
         }
 
         private static string LoadSource(string path)
@@ -65,44 +66,14 @@ namespace Project4
             GL.UseProgram(ProgramID);
         }
 
-        public void SetVertexPointer(int stride, int offset)
+        public void UpdateModelview()
         {
-            GL.VertexAttribPointer(_vertexLocation, 2, VertexAttribPointerType.Float, false, stride, offset);
-        }
-
-        public void EnableVertexPointer()
-        {
-            GL.EnableVertexAttribArray(_vertexLocation);
-        }
-
-        public void SetProjection(Matrix4 matrix)
-        {
-            _projectionMatrix = matrix;
-        }
-
-        public void SetModelview(Matrix4 matrix)
-        {
-            _modelviewMatrix = matrix;
-        }
-
-        public void MultProjection(Matrix4 matrix)
-        {
-            _projectionMatrix = matrix * _projectionMatrix;
-        }
-
-        public void MultModelview(Matrix4 matrix)
-        {
-            _modelviewMatrix = matrix * _modelviewMatrix;
+            GL.UniformMatrix4(ModelviewMatrixLocation, false, ref ModelviewMatrix);
         }
 
         public void UpdateProjection()
         {
-            GL.UniformMatrix4(_projectionMatrixLocation, false, ref _projectionMatrix);
-        }
-
-        public void UpdateModelview()
-        {
-            GL.UniformMatrix4(_modelviewMatrixLocation, false, ref _modelviewMatrix);
+            GL.UniformMatrix4(ProjectionMatrixLocation, false, ref ProjectionMatrix);
         }
     }
 }

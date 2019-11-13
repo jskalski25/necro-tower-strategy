@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9C90F768-263B-4576-8ABA-60B420FD6993}</ProjectGuid>
+    <ProjectGuid>{23D28A15-BE69-4EEC-BA19-63F21BF245FB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Project4</RootNamespace>
-    <AssemblyName>Project4</AssemblyName>
+    <RootNamespace>Project5</RootNamespace>
+    <AssemblyName>Project5</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,8 +49,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quad.cs" />
     <Compile Include="Shader.cs" />
-    <Compile Include="Texture.cs" />
     <Compile Include="Window.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,11 +63,6 @@
     <None Include="Shaders\shader.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Textures\image.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
