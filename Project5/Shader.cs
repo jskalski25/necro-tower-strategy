@@ -13,8 +13,8 @@ namespace Project5
         public readonly int VertexLocation;
         public readonly int TexCoordLocation;
 
-        public Matrix4 ProjectionMatrix;
-        public Matrix4 ModelviewMatrix;
+        private Matrix4 _projectionMatrix;
+        private Matrix4 _modelviewMatrix;
 
         public readonly int ProjectionMatrixLocation;
         public readonly int ModelviewMatrixLocation;
@@ -68,14 +68,34 @@ namespace Project5
             GL.UseProgram(ProgramID);
         }
 
+        public void SetModelview(Matrix4 matrix)
+        {
+            _modelviewMatrix = matrix;
+        }
+
+        public void SetProjection(Matrix4 matrix)
+        {
+            _projectionMatrix = matrix;
+        }
+
+        public void LeftMultModelview(Matrix4 matrix)
+        {
+            _modelviewMatrix = matrix * _modelviewMatrix;
+        }
+
+        public void LeftMultProjection(Matrix4 matrix)
+        {
+            _projectionMatrix = matrix * _projectionMatrix;
+        }
+
         public void UpdateModelview()
         {
-            GL.UniformMatrix4(ModelviewMatrixLocation, false, ref ModelviewMatrix);
+            GL.UniformMatrix4(ModelviewMatrixLocation, false, ref _modelviewMatrix);
         }
 
         public void UpdateProjection()
         {
-            GL.UniformMatrix4(ProjectionMatrixLocation, false, ref ProjectionMatrix);
+            GL.UniformMatrix4(ProjectionMatrixLocation, false, ref _projectionMatrix);
         }
     }
 }

@@ -52,10 +52,10 @@ namespace Project5
             _shader = new Shader("Shaders/shader.vert", "Shaders/shader.frag");
             _shader.Bind();
 
-            _shader.ProjectionMatrix = Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f);
+            _shader.SetProjection(Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f));
             _shader.UpdateProjection();
 
-            _shader.ModelviewMatrix = Matrix4.Identity;
+            _shader.SetModelview(Matrix4.Identity);
             _shader.UpdateModelview();
 
             Texture.SetShader(_shader);

@@ -106,12 +106,12 @@ namespace Project5
 
             _shader.Bind();
 
-            _shader.ModelviewMatrix = Matrix4.Identity;
-            _shader.ModelviewMatrix = Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)) * _shader.ModelviewMatrix;
+            _shader.SetModelview(Matrix4.Identity);
+            _shader.LeftMultModelview(Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)));
 
             if (scale != null)
             {
-                _shader.ModelviewMatrix = Matrix4.CreateScale((Vector3)scale);
+                _shader.LeftMultModelview(Matrix4.CreateScale((Vector3)scale));
             }
 
             _shader.UpdateModelview();
