@@ -13,7 +13,7 @@ namespace Project5
     class Window : GameWindow
     {
         private Shader _shader;
-        private Texture _quad;
+        private Texture _texture;
 
         public Window() : base(800, 600, GraphicsMode.Default, "Hello, World!")
         {
@@ -29,21 +29,22 @@ namespace Project5
         private void Free(object sender, EventArgs e)
         {
             _shader.Free();
-            _quad.Free();
+
+            Content.Free();
         }
 
         private void Render(object sender, FrameEventArgs e)
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            _quad.Render(50.0f, 50.0f);
+            _texture.Render(50.0f, 50.0f);
 
             Context.SwapBuffers();
         }
 
         private void LoadMedia(object sender, EventArgs e)
         {
-            _quad = new Texture("image.png");
+            _texture = Content.LoadTexture("image.png");
         }
 
         private void LoadShaders(object sender, EventArgs e)
