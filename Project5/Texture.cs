@@ -98,7 +98,7 @@ namespace Project5
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
         }
 
-        public void Render(float x, float y, Vector3? scale = null)
+        public void Render(float x, float y, Vector2? scale = null)
         {
             GL.BindVertexArray(_vertexArrayObject);
 
@@ -111,7 +111,7 @@ namespace Project5
 
             if (scale != null)
             {
-                _shader.LeftMultModelview(Matrix4.CreateScale((Vector3)scale));
+                _shader.LeftMultModelview(Matrix4.CreateScale(new Vector3(scale.Value.X, scale.Value.Y, 1.0f)));
             }
 
             _shader.UpdateModelview();
