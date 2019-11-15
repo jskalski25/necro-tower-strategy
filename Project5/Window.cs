@@ -13,7 +13,7 @@ namespace Project5
     class Window : GameWindow
     {
         private Shader _shader;
-        private Texture _texture;
+        private Map _map;
 
         public Window() : base(800, 600, GraphicsMode.Default, "Hello, World!")
         {
@@ -37,14 +37,14 @@ namespace Project5
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            _texture.Render(50.0f, 50.0f);
+            _map.Draw(Width / 2, Height / 2);
 
             Context.SwapBuffers();
         }
 
         private void LoadMedia(object sender, EventArgs e)
         {
-            _texture = Content.LoadTexture("image.png");
+            _map = new Map(3, Content.LoadTexture("image.png"));
         }
 
         private void LoadShaders(object sender, EventArgs e)
