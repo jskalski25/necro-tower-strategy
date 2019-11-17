@@ -49,8 +49,10 @@
   <ItemGroup>
     <Compile Include="Content.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="PolygonProgram.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShaderProgram.cs" />
     <Compile Include="Texture.cs" />
     <Compile Include="Shader.cs" />
     <Compile Include="Tile.cs" />
