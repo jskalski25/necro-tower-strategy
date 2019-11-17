@@ -14,7 +14,7 @@ namespace Project5
         public readonly float Width;
         public readonly float Height;
 
-        private static Shader _shader;
+        private static PolygonProgram _shader;
 
         private float[] _vertices;
         private uint[] _indices;
@@ -24,7 +24,7 @@ namespace Project5
         private int _vertexBufferObject;
         private int _elementBufferObject;
 
-        public static void SetShader(Shader shader)
+        public static void SetShader(PolygonProgram shader)
         {
             _shader = shader;
         }
@@ -88,11 +88,11 @@ namespace Project5
 
             GL.BindTexture(TextureTarget.Texture2D, TextureID);
 
-            GL.EnableVertexAttribArray(_shader.VertexLocation);
-            GL.VertexAttribPointer(_shader.VertexLocation, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
+            _shader.EnableVertexPointer();
+            _shader.SetVertexPointer(4 * sizeof(float), 0);
 
-            GL.EnableVertexAttribArray(_shader.TexCoordLocation);
-            GL.VertexAttribPointer(_shader.TexCoordLocation, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 2 * sizeof(float));
+            _shader.EnableTexCoordPointer();
+            _shader.SetTexCoordPointer(4 * sizeof(float), 2 * sizeof(float));
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
@@ -106,12 +106,12 @@ namespace Project5
 
             _shader.Bind();
 
-            _shader.SetModelview(Matrix4.Identity);
-            _shader.LeftMultModelview(Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)));
+            _shader.ModelviewMatrix = Matrix4.Identity;
+            _shader.ModelviewMatrix *= Matrix4.CreateTranslation(new Vector3(x, y, 0.0f));
 
             if (scale != null)
             {
-                _shader.LeftMultModelview(Matrix4.CreateScale(new Vector3(scale.Value.X, scale.Value.Y, 1.0f)));
+                _shader.ModelviewMatrix *= Matrix4.CreateScale(new Vector3(scale.Value.X, scale.Value.Y, 1.0f));
             }
 
             _shader.UpdateModelview();

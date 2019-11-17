@@ -10,11 +10,6 @@ namespace Project5
 
         public int ProgramID { get => programID; }
 
-        public ShaderProgram()
-        {
-            programID = 0;
-        }
-
         public abstract void LoadProgram();
 
         public void FreeProgram()
