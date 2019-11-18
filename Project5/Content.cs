@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace Project5
 {
@@ -9,6 +10,16 @@ namespace Project5
         public static Texture LoadTexture(string path)
         {
             Texture texture = new Texture(path);
+            Bitmap bmp = texture.GetBitmap();
+
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+                Font font = new Font("Arial", 10);
+                gfx.DrawString("text", font, Brushes.Black, 0.0f, (bmp.Height - font.Height) / 2);
+            }
+
+            texture.ModifyImage(bmp);
+
             _textures.Add(texture);
             return texture;
         }
