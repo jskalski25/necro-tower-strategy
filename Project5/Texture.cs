@@ -144,5 +144,17 @@ namespace Project5
 
             return bmp;
         }
+
+        public void ModifyImage(Bitmap bmp)
+        {
+            var data = bmp.LockBits(
+                new Rectangle(0, 0, bmp.Width, bmp.Height),
+                ImageLockMode.ReadOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            GL.BindTexture(TextureTarget.Texture2D, TextureID);
+
+            GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, bmp.Width, bmp.Height, PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+        }
     }
 }
