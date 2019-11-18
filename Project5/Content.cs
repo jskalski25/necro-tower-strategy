@@ -24,7 +24,7 @@ namespace Project5
             return texture;
         }
 
-        public static void Free()
+        public static void FreeAll()
         {
             foreach(var t in _textures)
             {

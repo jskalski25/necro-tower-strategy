@@ -25,7 +25,7 @@ namespace Project5
         {
             _shader.FreeProgram();
 
-            Content.Free();
+            Content.FreeAll();
         }
 
         private void Render(object sender, FrameEventArgs e)
