@@ -29,33 +29,30 @@ namespace Project5
             _shader = shader;
         }
 
-        public Texture(string path)
+        public Texture(Bitmap image)
         {
             TextureID = GL.GenTexture();
 
             GL.BindTexture(TextureTarget.Texture2D, TextureID);
 
-            using (var image = new Bitmap(path))
-            {
-                Width = image.Width;
-                Height = image.Height;
+            Width = image.Width;
+            Height = image.Height;
 
-                var data = image.LockBits(
-                    new Rectangle(0, 0, image.Width, image.Height),
-                    ImageLockMode.ReadOnly,
-                    System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            var data = image.LockBits(
+                new Rectangle(0, 0, image.Width, image.Height),
+                ImageLockMode.ReadOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
-                GL.TexImage2D(
-                    TextureTarget.Texture2D,
-                    0,
-                    PixelInternalFormat.Rgba,
-                    image.Width,
-                    image.Height,
-                    0,
-                    PixelFormat.Bgra,
-                    PixelType.UnsignedByte,
-                    data.Scan0);
-            }
+            GL.TexImage2D(
+                TextureTarget.Texture2D,
+                0,
+                PixelInternalFormat.Rgba,
+                image.Width,
+                image.Height,
+                0,
+                PixelFormat.Bgra,
+                PixelType.UnsignedByte,
+                data.Scan0);
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
@@ -98,6 +95,8 @@ namespace Project5
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
         }
 
+        public Texture(string path) : this(new Bitmap(path)) { }
+
         public void Render(float x, float y, Vector2? scale = null)
         {
             GL.BindVertexArray(_vertexArrayObject);
@@ -125,6 +124,25 @@ namespace Project5
 
             GL.DeleteBuffer(_vertexBufferObject);
             GL.DeleteVertexArray(_vertexArrayObject);
+        }
+
+        public Bitmap GetBitmap()
+        {
+            GL.Ext.GenFramebuffers(1, out int fboID);
+            GL.Ext.BindFramebuffer(FramebufferTarget.FramebufferExt, fboID);
+            GL.Ext.FramebufferTexture2D(FramebufferTarget.FramebufferExt, FramebufferAttachment.ColorAttachment0Ext, TextureTarget.Texture2D, TextureID, 0);
+
+            Bitmap bmp = new Bitmap((int)Width, (int)Height);
+            var data = bmp.LockBits(
+                new Rectangle(0, 0, bmp.Width, bmp.Height),
+                ImageLockMode.ReadOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            GL.ReadPixels(0, 0, bmp.Width, bmp.Height, PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+            GL.Ext.BindFramebuffer(FramebufferTarget.FramebufferExt, 0);
+            GL.Ext.DeleteFramebuffers(1, ref fboID);
+            bmp.UnlockBits(data);
+
+            return bmp;
         }
     }
 }
