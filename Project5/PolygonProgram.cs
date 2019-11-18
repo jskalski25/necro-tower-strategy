@@ -23,7 +23,7 @@ namespace Project5
 
         public Matrix4 ModelviewMatrix { get => modelviewMatrix; set => modelviewMatrix = value; }
 
-        public override void LoadProgram()
+        public PolygonProgram()
         {
             var vertexShaderSource = LoadShaderSource("Shaders/shader.vert");
             var vertexShader = GL.CreateShader(ShaderType.VertexShader);

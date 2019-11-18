@@ -10,8 +10,6 @@ namespace Project5
 
         public int ProgramID { get => programID; }
 
-        public abstract void LoadProgram();
-
         public void FreeProgram()
         {
             GL.DeleteProgram(ProgramID);
