@@ -15,7 +15,7 @@ namespace Project5
             using (Graphics gfx = Graphics.FromImage(bmp))
             {
                 Font font = new Font("Arial", 10);
-                gfx.DrawString("text", font, Brushes.Black, 0.0f, (bmp.Height - font.Height) / 2);
+                gfx.DrawString("text", font, Brushes.Black, 18.0f, (bmp.Height - font.Height) / 2);
             }
 
             texture.ModifyImage(bmp);

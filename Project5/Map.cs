@@ -5,34 +5,31 @@ namespace Project5
 {
     class Map
     {
-        private List<Tile> _tiles;
-        private Vector2 _camera;
+        private List<Tile> tiles;
+        private Vector2 camera;
 
-        public Map(int a, Texture texture)
+        public Map(int a, Terrain terrain)
         {
-            _tiles = new List<Tile>();
+            tiles = new List<Tile>();
             for (int y = 0; y < a; ++y)
             {
                 for (int x = 0; x < a; ++x)
                 {
-                    Tile tile = new Tile(x, y, texture);
-                    _tiles.Add(tile);
+                    Tile tile = new Tile(x, y, terrain);
+                    tiles.Add(tile);
                 }
             }
 
-            float camX = texture.Width * a / 2;
-            float camY = texture.Height * a / 2;
-            _camera = new Vector2(camX, camY);
+            float camX = terrain.Texture.Width * a / 2;
+            float camY = terrain.Texture.Height * a / 2;
+            camera = new Vector2(camX, camY);
         }
 
         public void Draw(float x, float y)
         {
-            foreach(var tile in _tiles)
+            foreach(var tile in tiles)
             {
-                float newX = x + tile.X * tile.Width - _camera.X;
-                float newY = y + tile.Y * tile.Height - _camera.Y;
-
-                tile.Draw(newX, newY);
+                tile.Draw(x - camera.X, y - camera.Y);
             }
         }
     }

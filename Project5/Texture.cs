@@ -24,6 +24,8 @@ namespace Project5
         private int _vertexBufferObject;
         private int _elementBufferObject;
 
+        public PolygonProgram Shader => _shader;
+
         public static void SetShader(PolygonProgram shader)
         {
             _shader = shader;
@@ -105,7 +107,6 @@ namespace Project5
 
             _shader.Bind();
 
-            _shader.ModelviewMatrix = Matrix4.Identity;
             _shader.ModelviewMatrix *= Matrix4.CreateTranslation(new Vector3(x, y, 0.0f));
 
             if (scale != null)

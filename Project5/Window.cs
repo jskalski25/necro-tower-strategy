@@ -7,8 +7,8 @@ namespace Project5
 {
     class Window : GameWindow
     {
-        private PolygonProgram _shader;
-        private Map _map;
+        private PolygonProgram shader;
+        private Map map;
 
         public Window() : base(800, 600, GraphicsMode.Default, "Hello, World!")
         {
@@ -23,7 +23,7 @@ namespace Project5
 
         private void Free(object sender, EventArgs e)
         {
-            _shader.FreeProgram();
+            shader.FreeProgram();
 
             Content.FreeAll();
         }
@@ -32,28 +32,28 @@ namespace Project5
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            _map.Draw(Width / 2, Height / 2);
+            map.Draw(Width / 2, Height / 2);
 
             Context.SwapBuffers();
         }
 
         private void LoadMedia(object sender, EventArgs e)
         {
-            _map = new Map(3, Content.LoadTexture("image.png"));
+            map = new Map(3, Terrain.Grass);
         }
 
         private void LoadShaders(object sender, EventArgs e)
         {
-            _shader = new PolygonProgram();
-            _shader.Bind();
+            shader = new PolygonProgram();
+            shader.Bind();
 
-            _shader.ProjectionMatrix = Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f);
-            _shader.UpdateProjection();
+            shader.ProjectionMatrix = Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f);
+            shader.UpdateProjection();
 
-            _shader.ModelviewMatrix = Matrix4.Identity;
-            _shader.UpdateModelview();
+            shader.ModelviewMatrix = Matrix4.Identity;
+            shader.UpdateModelview();
 
-            Texture.SetShader(_shader);
+            Texture.SetShader(shader);
         }
 
         private void InitGL(object sender, EventArgs e)
