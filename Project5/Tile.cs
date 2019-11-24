@@ -24,6 +24,7 @@ namespace Project5
             vector = Matrix4.CreateRotationZ((float)(Math.PI / 4.0f)) * vector;
             vector = Matrix4.CreateScale((float)Math.Sin(Math.PI / 4.0f), (float)Math.Cos(Math.PI / 4.0f), 1.0f) * vector;
             vector = Matrix4.CreateScale(TextureWidth, TextureHeight, 1.0f) * vector;
+
             TextureX = vector.X;
             TextureY = vector.Y;
         }

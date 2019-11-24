@@ -8,6 +8,9 @@ namespace Project5
         private List<Tile> tiles;
         private Vector2 camera;
 
+        public float Height { get; }
+        public float Width { get; }
+
         public Map(int a, Terrain terrain)
         {
             tiles = new List<Tile>();
@@ -20,9 +23,10 @@ namespace Project5
                 }
             }
 
-            float camX = terrain.Texture.Width * a / 2;
-            float camY = terrain.Texture.Height * a / 2;
-            camera = new Vector2(camX, camY);
+            Width = terrain.Texture.Width * a;
+            Height = terrain.Texture.Height * a;
+
+            camera = new Vector2(0, 0 - (Height - terrain.Texture.Height) / 2);
         }
 
         public void Draw(float x, float y)

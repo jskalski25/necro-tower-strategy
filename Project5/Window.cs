@@ -32,14 +32,14 @@ namespace Project5
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            map.Draw(Width / 2, Height / 2);
+            map.Draw((Width - map.Width) / 2, (Height - map.Height) / 2);
 
             Context.SwapBuffers();
         }
 
         private void LoadMedia(object sender, EventArgs e)
         {
-            map = new Map(3, Terrain.Grass);
+            map = new Map(5, Terrain.Grass);
         }
 
         private void LoadShaders(object sender, EventArgs e)
