@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Content.cs" />
+    <Compile Include="Grass.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="PolygonProgram.cs" />
     <Compile Include="Program.cs" />

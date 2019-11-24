@@ -39,7 +39,7 @@ namespace Project5
 
         private void LoadMedia(object sender, EventArgs e)
         {
-            map = new Map(5, Terrain.Grass);
+            map = new Map(5, new Grass());
         }
 
         private void LoadShaders(object sender, EventArgs e)
