@@ -1,10 +1,9 @@
 ﻿using System.IO;
-using System.Text;
 using OpenTK.Graphics.OpenGL;
 
 namespace Project5
 {
-    public abstract class ShaderProgram
+    abstract class Shader
     {
         protected int programID;
 
@@ -20,11 +19,22 @@ namespace Project5
             GL.UseProgram(ProgramID);
         }
 
+        protected int LoadShader(ShaderType type, string source)
+        {
+            var shader = GL.CreateShader(type);
+
+            GL.ShaderSource(shader, source);
+
+            GL.CompileShader(shader);
+
+            return shader;
+        }
+
         protected string LoadShaderSource(string path)
         {
-            using (var src = new StreamReader(path, Encoding.UTF8))
+            using (var reader = new StreamReader(path))
             {
-                return src.ReadToEnd();
+                return reader.ReadToEnd();
             }
         }
     }

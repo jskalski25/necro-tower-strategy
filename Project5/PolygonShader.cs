@@ -8,7 +8,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Project5
 {
-    public class PolygonProgram : ShaderProgram
+    class PolygonShader : Shader
     {
         private int vertexLocation;
         private int texCoordLocation;
@@ -23,7 +23,7 @@ namespace Project5
 
         public Matrix4 ModelviewMatrix { get => modelviewMatrix; set => modelviewMatrix = value; }
 
-        public PolygonProgram()
+        public PolygonShader()
         {
             var vertexShaderSource = LoadShaderSource("Shaders/shader.vert");
             var vertexShader = GL.CreateShader(ShaderType.VertexShader);
