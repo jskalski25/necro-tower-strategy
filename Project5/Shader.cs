@@ -5,18 +5,18 @@ namespace Project5
 {
     abstract class Shader
     {
-        protected int programID;
+        protected int shaderProgram;
 
-        public int ProgramID { get => programID; }
+        public int ShaderProgram { get => shaderProgram; }
 
         public void FreeProgram()
         {
-            GL.DeleteProgram(ProgramID);
+            GL.DeleteProgram(ShaderProgram);
         }
 
         public void Bind()
         {
-            GL.UseProgram(ProgramID);
+            GL.UseProgram(ShaderProgram);
         }
 
         protected int LoadShader(ShaderType type, string source)

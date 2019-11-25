@@ -47,10 +47,10 @@ namespace Project5
             shader = new PolygonShader();
             shader.Bind();
 
-            shader.ProjectionMatrix = Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f);
+            shader.SetProjection(Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f));
             shader.UpdateProjection();
 
-            shader.ModelviewMatrix = Matrix4.Identity;
+            shader.SetModelview(Matrix4.Identity);
             shader.UpdateModelview();
 
             Texture.SetShader(shader);
