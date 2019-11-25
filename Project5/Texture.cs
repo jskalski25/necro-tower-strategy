@@ -14,21 +14,21 @@ namespace Project5
         public readonly float Width;
         public readonly float Height;
 
-        private static PolygonShader _shader;
+        private static PolygonShader shader;
 
-        private float[] _vertices;
-        private uint[] _indices;
+        private float[] vertices;
+        private uint[] indices;
 
-        private int _vertexArrayObject;
+        private int vertexArrayObject;
 
-        private int _vertexBufferObject;
-        private int _elementBufferObject;
+        private int vertexBufferObject;
+        private int elementBufferObject;
 
-        public PolygonShader Shader => _shader;
+        public PolygonShader Shader => shader;
 
         public static void SetShader(PolygonShader shader)
         {
-            _shader = shader;
+            Texture.shader = shader;
         }
 
         public Texture(Bitmap image)
@@ -62,7 +62,7 @@ namespace Project5
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
 
-            _vertices = new float[]
+            vertices = new float[]
             {
                 0.0f,   0.0f,   0.0f, 0.0f,
                 Width,  0.0f,   1.0f, 0.0f,
@@ -70,61 +70,63 @@ namespace Project5
                 0.0f,   Height, 0.0f, 1.0f
             };
 
-            _indices = new uint[] { 0, 1, 2, 3 };
+            indices = new uint[] { 0, 1, 2, 3 };
 
-            _vertexBufferObject = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
-            GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
+            vertexBufferObject = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferObject);
+            GL.BufferData(BufferTarget.ArrayBuffer, vertices.Length * sizeof(float), vertices, BufferUsageHint.StaticDraw);
 
-            _elementBufferObject = GL.GenBuffer();
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
-            GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
+            elementBufferObject = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, elementBufferObject);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, indices.Length * sizeof(uint), indices, BufferUsageHint.StaticDraw);
 
-            _vertexArrayObject = GL.GenVertexArray();
-            GL.BindVertexArray(_vertexArrayObject);
+            vertexArrayObject = GL.GenVertexArray();
+            GL.BindVertexArray(vertexArrayObject);
 
-            _shader.Bind();
+            shader.Bind();
 
             GL.BindTexture(TextureTarget.Texture2D, TextureID);
 
-            _shader.EnableVertexPointer();
-            _shader.SetVertexPointer(4 * sizeof(float), 0);
+            shader.EnableVertexPointer();
+            shader.SetVertexPointer(4 * sizeof(float), 0);
 
-            _shader.EnableTexCoordPointer();
-            _shader.SetTexCoordPointer(4 * sizeof(float), 2 * sizeof(float));
+            shader.EnableTexCoordPointer();
+            shader.SetTexCoordPointer(4 * sizeof(float), 2 * sizeof(float));
 
-            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
-            GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, vertexBufferObject);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, elementBufferObject);
         }
 
         public Texture(string path) : this(new Bitmap(path)) { }
 
         public void Render(float x, float y, Vector2? scale = null)
         {
-            GL.BindVertexArray(_vertexArrayObject);
+            GL.BindVertexArray(vertexArrayObject);
 
             GL.BindTexture(TextureTarget.Texture2D, TextureID);
 
-            _shader.Bind();
+            shader.Bind();
 
-            _shader.ModelviewMatrix *= Matrix4.CreateTranslation(new Vector3(x, y, 0.0f));
+            shader.SetModelview(Matrix4.Identity);
 
             if (scale != null)
             {
-                _shader.ModelviewMatrix *= Matrix4.CreateScale(new Vector3(scale.Value.X, scale.Value.Y, 1.0f));
+                shader.LeftMultModelview(Matrix4.CreateScale(new Vector3(scale.Value.X, scale.Value.Y, 1.0f)));
             }
 
-            _shader.UpdateModelview();
+            shader.LeftMultModelview(Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)));
 
-            GL.DrawElements(PrimitiveType.TriangleFan, _indices.Length, DrawElementsType.UnsignedInt, 0);
+            shader.UpdateModelview();
+
+            GL.DrawElements(PrimitiveType.TriangleFan, indices.Length, DrawElementsType.UnsignedInt, 0);
         }
 
         public void Free()
         {
             GL.DeleteTexture(TextureID);
 
-            GL.DeleteBuffer(_vertexBufferObject);
-            GL.DeleteVertexArray(_vertexArrayObject);
+            GL.DeleteBuffer(vertexBufferObject);
+            GL.DeleteVertexArray(vertexArrayObject);
         }
 
         public Bitmap GetBitmap()

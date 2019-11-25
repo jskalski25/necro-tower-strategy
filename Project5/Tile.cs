@@ -39,8 +39,6 @@ namespace Project5
 
         public void Draw(float x, float y) //todo mozna by nazwe zmienic tak zeby mowila ze to tylko terrain
         {
-            terrain.Texture.Shader.ModelviewMatrix = Matrix4.Identity;
-
             terrain.Texture.Render(x + TextureX, y + TextureY);
         }
 

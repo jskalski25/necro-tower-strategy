@@ -14,39 +14,25 @@ namespace Project5
         private Matrix4 modelviewMatrix;
         private int modelviewMatrixLocation;
 
-        public Matrix4 ProjectionMatrix { get => projectionMatrix; set => projectionMatrix = value; }
-
-        public Matrix4 ModelviewMatrix { get => modelviewMatrix; set => modelviewMatrix = value; }
-
         public PolygonShader()
         {
             var vertexShaderSource = LoadShaderSource("Shaders/shader.vert");
-            var vertexShader = GL.CreateShader(ShaderType.VertexShader);
-            GL.ShaderSource(vertexShader, vertexShaderSource);
-            GL.CompileShader(vertexShader);
+            var vertexShader = LoadShader(ShaderType.VertexShader, vertexShaderSource);
 
             var fragmentShaderSource = LoadShaderSource("Shaders/shader.frag");
-            var fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
-            GL.ShaderSource(fragmentShader, fragmentShaderSource);
-            GL.CompileShader(fragmentShader);
+            var fragmentShader = LoadShader(ShaderType.FragmentShader, fragmentShaderSource);
 
-            programID = GL.CreateProgram();
+            shaderProgram = GL.CreateProgram();
+            GL.AttachShader(shaderProgram, vertexShader);
+            GL.AttachShader(shaderProgram, fragmentShader);
 
-            GL.AttachShader(programID, vertexShader);
-            GL.AttachShader(programID, fragmentShader);
+            GL.LinkProgram(shaderProgram);
 
-            GL.LinkProgram(programID);
+            vertexLocation = GL.GetAttribLocation(ShaderProgram, "aPosition");
+            texCoordLocation = GL.GetAttribLocation(ShaderProgram, "aTexCoord");
 
-            GL.DetachShader(programID, vertexShader);
-            GL.DetachShader(programID, fragmentShader);
-            GL.DeleteShader(vertexShader);
-            GL.DeleteShader(fragmentShader);
-
-            vertexLocation = GL.GetAttribLocation(ProgramID, "aPosition");
-            texCoordLocation = GL.GetAttribLocation(ProgramID, "aTexCoord");
-
-            projectionMatrixLocation = GL.GetUniformLocation(ProgramID, "uProjectionMatrix");
-            modelviewMatrixLocation = GL.GetUniformLocation(ProgramID, "uModelviewMatrix");
+            projectionMatrixLocation = GL.GetUniformLocation(ShaderProgram, "uProjectionMatrix");
+            modelviewMatrixLocation = GL.GetUniformLocation(ShaderProgram, "uModelviewMatrix");
         }
 
         public void EnableVertexPointer()
@@ -77,6 +63,26 @@ namespace Project5
         public void UpdateModelview()
         {
             GL.UniformMatrix4(modelviewMatrixLocation, false, ref modelviewMatrix);
+        }
+
+        public void SetProjection(Matrix4 matrix)
+        {
+            projectionMatrix = matrix;
+        }
+
+        public void SetModelview(Matrix4 matrix)
+        {
+            modelviewMatrix = matrix;
+        }
+
+        public void LeftMultProjection(Matrix4 matrix)
+        {
+            projectionMatrix = matrix * projectionMatrix;
+        }
+
+        public void LeftMultModelview(Matrix4 matrix)
+        {
+            modelviewMatrix = matrix * modelviewMatrix;
         }
     }
 }
