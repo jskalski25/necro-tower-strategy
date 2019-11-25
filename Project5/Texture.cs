@@ -99,7 +99,7 @@ namespace Project5
 
         public Texture(string path) : this(new Bitmap(path)) { }
 
-        public void Render(float x, float y, Vector2? scale = null)
+        public void Render(float x, float y)
         {
             GL.BindVertexArray(vertexArrayObject);
 
@@ -107,14 +107,7 @@ namespace Project5
 
             shader.Bind();
 
-            shader.SetModelview(Matrix4.Identity);
-
-            if (scale != null)
-            {
-                shader.LeftMultModelview(Matrix4.CreateScale(new Vector3(scale.Value.X, scale.Value.Y, 1.0f)));
-            }
-
-            shader.LeftMultModelview(Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)));
+            Move(x, y);
 
             shader.UpdateModelview();
 
@@ -158,6 +151,21 @@ namespace Project5
             GL.BindTexture(TextureTarget.Texture2D, TextureID);
 
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, bmp.Width, bmp.Height, PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+        }
+
+        public void Reset()
+        {
+            shader.SetModelview(Matrix4.Identity);
+        }
+
+        public void Move(float x, float y)
+        {
+            shader.LeftMultModelview(Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)));
+        }
+
+        public void Scale(float x, float y)
+        {
+            shader.LeftMultModelview(Matrix4.CreateScale(new Vector3(x, y, 1.0f)));
         }
     }
 }
