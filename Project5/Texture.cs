@@ -14,7 +14,7 @@ namespace Project5
         public readonly float Width;
         public readonly float Height;
 
-        private static PolygonProgram _shader;
+        private static PolygonShader _shader;
 
         private float[] _vertices;
         private uint[] _indices;
@@ -24,9 +24,9 @@ namespace Project5
         private int _vertexBufferObject;
         private int _elementBufferObject;
 
-        public PolygonProgram Shader => _shader;
+        public PolygonShader Shader => _shader;
 
-        public static void SetShader(PolygonProgram shader)
+        public static void SetShader(PolygonShader shader)
         {
             _shader = shader;
         }

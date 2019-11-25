@@ -7,7 +7,7 @@ namespace Project5
 {
     class Window : GameWindow
     {
-        private PolygonProgram shader;
+        private PolygonShader shader;
         private Map map;
 
         public Window() : base(800, 600, GraphicsMode.Default, "Hello, World!")
@@ -44,7 +44,7 @@ namespace Project5
 
         private void LoadShaders(object sender, EventArgs e)
         {
-            shader = new PolygonProgram();
+            shader = new PolygonShader();
             shader.Bind();
 
             shader.ProjectionMatrix = Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f);
