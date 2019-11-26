@@ -11,9 +11,6 @@ namespace Project5
         public int X { get; }
         public int Y { get; }
 
-        public float TextureX { get; }
-        public float TextureY { get; }
-
         private Terrain terrain;
         public List<GridItem> Items = new List<GridItem>();
 
@@ -24,18 +21,25 @@ namespace Project5
 
             X = x;
             Y = y;
-
-            Vector4 vector = new Vector4(X, Y, 0.0f, 1.0f);
-            vector = Matrix4.CreateRotationZ((float)(Math.PI / 4.0f)) * vector;
-            vector = Matrix4.CreateScale((float)Math.Sin(Math.PI / 4.0f), (float)Math.Cos(Math.PI / 4.0f), 1.0f) * vector;
-            vector = Matrix4.CreateScale(TextureWidth, TextureHeight, 1.0f) * vector;
-
-            TextureX = vector.X;
-            TextureY = vector.Y;
         }
 
-        public float TextureWidth { get => terrain.Texture.Width; }
-        public float TextureHeight { get => terrain.Texture.Height; }
+        public float Width { get => terrain.Texture.Width; }
+        public float Height { get => terrain.Texture.Height; }
+
+        public void Draw(float x, float y)
+        {
+            terrain.Texture.Render(x, y);
+
+            foreach(Unit unit in units)
+            {
+                unit.Texture.Render(x, y - unit.Texture.Height + terrain.Texture.Height);
+            }
+        }
+
+        public bool IsAt(int x, int y)
+        {
+            return X == x && Y == y;
+        }
 
         public void Draw(float x, float y) //todo mozna by nazwe zmienic tak zeby mowila ze to tylko terrain
         {
