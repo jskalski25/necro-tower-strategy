@@ -107,7 +107,8 @@ namespace Project5
 
             shader.Bind();
 
-            Move(x, y);
+            shader.SetModelview(Matrix4.Identity);
+            shader.LeftMultModelview(Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)));
 
             shader.UpdateModelview();
 
@@ -151,21 +152,6 @@ namespace Project5
             GL.BindTexture(TextureTarget.Texture2D, TextureID);
 
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, bmp.Width, bmp.Height, PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
-        }
-
-        public void Reset()
-        {
-            shader.SetModelview(Matrix4.Identity);
-        }
-
-        public void Move(float x, float y)
-        {
-            shader.LeftMultModelview(Matrix4.CreateTranslation(new Vector3(x, y, 0.0f)));
-        }
-
-        public void Scale(float x, float y)
-        {
-            shader.LeftMultModelview(Matrix4.CreateScale(new Vector3(x, y, 1.0f)));
         }
     }
 }

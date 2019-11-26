@@ -34,8 +34,6 @@ namespace Project5
 
         public void Draw(float x, float y)
         {
-            terrain.Texture.Reset();
-
             terrain.Texture.Render(x + TextureX, y + TextureY);
         }
     }
