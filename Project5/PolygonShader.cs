@@ -3,7 +3,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Project5
 {
-    public class PolygonShader : Shader
+    class PolygonShader : Shader
     {
         private int vertexLocation;
         private int texCoordLocation;

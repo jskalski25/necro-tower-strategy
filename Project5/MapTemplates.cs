@@ -7,7 +7,7 @@ using Project5.GridElementsRepo.BuildingTypes;
 
 namespace Project5
 {
-    public static class MapTemplates
+    internal static class MapTemplates
     {
         ///<summary>
         ///Pusta mapa

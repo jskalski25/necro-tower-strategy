@@ -1,6 +1,6 @@
 ﻿namespace Project5
 {
-    public class Terrain
+    internal class Terrain
     {
         public static Terrain Grass = new Terrain(Content.LoadTexture("img/grass.png"));
 

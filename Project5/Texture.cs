@@ -7,7 +7,7 @@ using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 
 namespace Project5
 {
-    public class Texture
+    class Texture
     {
         public readonly int TextureID;
 
@@ -23,8 +23,6 @@ namespace Project5
 
         private int vertexBufferObject;
         private int elementBufferObject;
-
-        public PolygonShader Shader => shader;
 
         public static void SetShader(PolygonShader shader)
         {

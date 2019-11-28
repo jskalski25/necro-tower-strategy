@@ -7,7 +7,7 @@ using OpenTK.Graphics.ES11;
 
 namespace Project5.GridElementsRepo.BuildingTypes
 {
-    public class Castel: Building
+    internal class Castel: Building
     {
         public Castel()
         {

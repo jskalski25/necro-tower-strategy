@@ -6,7 +6,7 @@ using Project5.GridElementsRepo;
 
 namespace Project5
 {
-    public class Tile
+    internal class Tile
     {
         public int X { get; }
         public int Y { get; }
@@ -47,7 +47,6 @@ namespace Project5
             //Renderowanie budynków
             foreach (Building building in Items.OfType<Building>())
             {
-                building.Texture.Shader.ModelviewMatrix = Matrix4.Identity;
                 building.Texture.Render(x + TextureX, y + TextureY);
             }
         }

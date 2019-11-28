@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project5.GridElementsRepo
 {
-    public class Building: GridItem
+    internal class Building: GridItem
     {
         protected Texture texture;
 
