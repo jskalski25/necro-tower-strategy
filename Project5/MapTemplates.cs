@@ -40,13 +40,13 @@ namespace Project5
                     Tile tile = new Tile(x, y, terrain);
 
                     //Generowanie zamku pierwszego gracza
-                    if (x == 0 && y == 0)
+                    if (x == 0 && y == size - 1)
                     {
                         tile.Items.Add(new Castle());
                     }
 
                     //Generowanie zamku drugiego gracza
-                    if (x == size - 1 && y == size - 1)
+                    if (x == size - 1 && y == 0)
                     {
                         tile.Items.Add(new Castle());
                     }

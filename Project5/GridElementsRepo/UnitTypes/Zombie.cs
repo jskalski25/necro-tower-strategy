@@ -1,6 +1,8 @@
-﻿namespace Project5
+﻿using Project5.GridElementsRepo;
+
+namespace Project5.GridElementsRepo.UnitTypes
 {
-    class Zombie : Unit
+    class Zombie : ArmyUnit
     {
         public Zombie()
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project5.GridElementsRepo
 {
-    public class UnitGroup: GridItem
+    class UnitGroup: GridItem
     {
         public ObservableCollection<ArmyUnit> Units;
     }

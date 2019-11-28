@@ -3,6 +3,7 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using Project5.ConfigManager;
+using Project5.Controls;
 
 namespace Project5
 {
@@ -33,14 +34,15 @@ namespace Project5
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            map.Draw((Width - map.Width) / 2, (Height - map.Height) / 2);
+            DrawStartMenu();
+            //map.Draw((Width - map.Width) / 2, (Height - map.Height) / 2);
 
             Context.SwapBuffers();
         }
 
         private void LoadMedia(object sender, EventArgs e)
         {
-            map = new Map(5, Terrain.Grass);
+            map = new Map(16, Terrain.Grass);
         }
 
         private void LoadShaders(object sender, EventArgs e)
@@ -60,6 +62,15 @@ namespace Project5
         private void InitGL(object sender, EventArgs e)
         {
             GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        }
+
+        private void DrawStartMenu()
+        {
+            var startButton = new Button();
+            startButton.Texture.Render(Width / 2 - startButton.Texture.Width / 2, Height / 2);
+
+            var exitButton = new Button();
+            startButton.Texture.Render(Width / 2 - exitButton.Texture.Width / 2, Height / 2 - startButton.Texture.Height - 10);
         }
     }
 }

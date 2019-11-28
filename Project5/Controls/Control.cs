@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project5.GridElementsRepo
+namespace Project5.Controls
 {
-    class ArmyUnit
+    class Control
     {
         protected Texture texture;
 

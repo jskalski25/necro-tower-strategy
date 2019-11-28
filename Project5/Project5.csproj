@@ -51,6 +51,8 @@
     <Compile Include="ConfigManager\ConfigCategories\UserSettings.cs" />
     <Compile Include="ConfigManager\XmlConverters.cs" />
     <Compile Include="Content.cs" />
+    <Compile Include="Controls\Button.cs" />
+    <Compile Include="Controls\Control.cs" />
     <Compile Include="GridElementsRepo\ArmyUnit.cs" />
     <Compile Include="GridElementsRepo\Building.cs" />
     <Compile Include="GridElementsRepo\BuildingTypes\Castle.cs" />
@@ -66,9 +68,8 @@
     <Compile Include="Terrain.cs" />
     <Compile Include="Texture.cs" />
     <Compile Include="Tile.cs" />
-    <Compile Include="Unit.cs" />
     <Compile Include="Window.cs" />
-    <Compile Include="Zombie.cs" />
+    <Compile Include="GridElementsRepo\UnitTypes\Zombie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -82,6 +83,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\button1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\castle.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
