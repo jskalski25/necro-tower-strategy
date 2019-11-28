@@ -7,11 +7,11 @@ using OpenTK.Graphics.ES11;
 
 namespace Project5.GridElementsRepo.BuildingTypes
 {
-    internal class Castel: Building
+    internal class Castle: Building
     {
-        public Castel()
+        public Castle()
         {
-            texture = Content.LoadTexture("img/Castel.png");
+            texture = Content.LoadTexture("img/Castle.png");
         }
     }
 }

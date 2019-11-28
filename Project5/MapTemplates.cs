@@ -42,13 +42,13 @@ namespace Project5
                     //Generowanie zamku pierwszego gracza
                     if (x == 0 && y == 0)
                     {
-                        tile.Items.Add(new Castel());
+                        tile.Items.Add(new Castle());
                     }
 
                     //Generowanie zamku drugiego gracza
                     if (x == size - 1 && y == size - 1)
                     {
-                        tile.Items.Add(new Castel());
+                        tile.Items.Add(new Castle());
                     }
 
                     tiles.Add(tile);
