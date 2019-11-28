@@ -40,8 +40,6 @@ namespace Project5
         private void LoadMedia(object sender, EventArgs e)
         {
             map = new Map(5, new Grass());
-            map.TileAt(1, 3).AddUnit(new Zombie());
-            map.TileAt(3, 1).AddUnit(new Zombie());
         }
 
         private void LoadShaders(object sender, EventArgs e)
