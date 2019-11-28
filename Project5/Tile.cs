@@ -30,29 +30,15 @@ namespace Project5
         {
             terrain.Texture.Render(x, y);
 
-            foreach(Unit unit in units)
+            foreach (Building building in Items.OfType<Building>())
             {
-                unit.Texture.Render(x, y - unit.Texture.Height + terrain.Texture.Height);
+                building.Texture.Render(x, y);
             }
         }
 
         public bool IsAt(int x, int y)
         {
             return X == x && Y == y;
-        }
-
-        public void Draw(float x, float y) //todo mozna by nazwe zmienic tak zeby mowila ze to tylko terrain
-        {
-            terrain.Texture.Render(x + TextureX, y + TextureY);
-        }
-
-        public void DrawFileContent(float x, float y)
-        {
-            //Renderowanie budynków
-            foreach (Building building in Items.OfType<Building>())
-            {
-                building.Texture.Render(x + TextureX, y + TextureY);
-            }
         }
     }
 }
