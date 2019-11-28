@@ -7,14 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace MapMockup1.ConfigManager.ConfigCategories
+namespace Project5.ConfigManager.ConfigCategories
 {
     public class UserSettings
     {
         [XmlIgnore]
         public string Path ="";
 
-        public string UserName;
+        //public string UserName;
+        public int WindowWidth = 800;
+        public int WindowHeight = 600;
 
         public UserSettings()
         {

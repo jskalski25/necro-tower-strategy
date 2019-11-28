@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapMockup1.GridElementsRepo
+namespace Project5.GridElementsRepo
 {
     public class Building: GridItem
     {
+        protected Texture texture;
 
+        public Texture Texture => texture;
     }
 }

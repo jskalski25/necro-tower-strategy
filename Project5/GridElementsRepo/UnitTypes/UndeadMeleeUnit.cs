@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapMockup1.GridElementsRepo.UnitTypes
+namespace Project5.GridElementsRepo.UnitTypes
 {
     public class UndeadMeleeUnit: ArmyUnit
     {

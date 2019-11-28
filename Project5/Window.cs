@@ -2,6 +2,7 @@
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using Project5.ConfigManager;
 
 namespace Project5
 {
@@ -10,7 +11,7 @@ namespace Project5
         private PolygonProgram shader;
         private Map map;
 
-        public Window() : base(800, 600, GraphicsMode.Default, "Hello, World!")
+        public Window(Int32 width, Int32 height) : base(width, height, GraphicsMode.Default, "Hello, World!")
         {
             Load += InitGL;
             Load += LoadShaders;

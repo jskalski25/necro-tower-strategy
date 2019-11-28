@@ -4,7 +4,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Project5
 {
-    abstract class ShaderProgram
+    public abstract class ShaderProgram
     {
         protected int programID;
 

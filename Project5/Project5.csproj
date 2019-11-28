@@ -47,8 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigManager\Config.cs" />
+    <Compile Include="ConfigManager\ConfigCategories\UserSettings.cs" />
+    <Compile Include="ConfigManager\XmlConverters.cs" />
     <Compile Include="Content.cs" />
+    <Compile Include="GridElementsRepo\ArmyUnit.cs" />
+    <Compile Include="GridElementsRepo\Building.cs" />
+    <Compile Include="GridElementsRepo\BuildingTypes\Castel.cs" />
+    <Compile Include="GridElementsRepo\GridItem.cs" />
+    <Compile Include="GridElementsRepo\UnitGroup.cs" />
+    <Compile Include="GridElementsRepo\UnitTypes\UndeadMeleeUnit.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MapTemplates.cs" />
     <Compile Include="PolygonProgram.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,12 +80,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="grass.png">
+    <Content Include="img\castel.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="image.png">
+    <Content Include="img\grass.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="img\image.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TODO TODO.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

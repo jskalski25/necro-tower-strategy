@@ -8,7 +8,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Project5
 {
-    class PolygonProgram : ShaderProgram
+    public class PolygonProgram : ShaderProgram
     {
         private int vertexLocation;
         private int texCoordLocation;

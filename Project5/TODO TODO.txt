@@ -1,0 +1,3 @@
+﻿-Po probie ładowania grafiki z pliku ktory nie isnieje gra sie crashuje
+-Przekonaj mnie co do poprawnosci nazwy klasy "content"
+-Tworzenie textury z patha zamiast z content nie dziala, a przynajmniej ja nie umiem z tego korzystac

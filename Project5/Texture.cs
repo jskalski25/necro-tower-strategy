@@ -7,7 +7,7 @@ using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 
 namespace Project5
 {
-    class Texture
+    public class Texture
     {
         public readonly int TextureID;
 

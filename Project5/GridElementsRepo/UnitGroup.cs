@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapMockup1.GridElementsRepo
+namespace Project5.GridElementsRepo
 {
-    public class GridFile
+    public class UnitGroup: GridItem
     {
-        public int xPos;
-        public int yPos;
-
-        public ObservableCollection<GridItem> Content;
+        public ObservableCollection<ArmyUnit> Units;
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapMockup1.GridElementsRepo
+namespace Project5.GridElementsRepo
 {
     public class ArmyUnit
     {

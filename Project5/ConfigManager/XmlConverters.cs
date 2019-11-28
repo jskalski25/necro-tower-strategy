@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using MapMockup1.ConfigManager.ConfigCategories;
+using Project5.ConfigManager.ConfigCategories;
 
-namespace MapMockup1.ConfigManager
+namespace Project5.ConfigManager
 {
     public static class XmlConverters
     {

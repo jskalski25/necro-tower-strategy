@@ -13,15 +13,9 @@ namespace Project5
 
         public Map(int a, Terrain terrain)
         {
-            tiles = new List<Tile>();
-            for (int y = 0; y < a; ++y)
-            {
-                for (int x = 0; x < a; ++x)
-                {
-                    Tile tile = new Tile(x, y, terrain);
-                    tiles.Add(tile);
-                }
-            }
+            //tiles = MapGenerator.GetSample1(a, terrain); //Pusta mapa
+
+            tiles = MapTemplates.GetSample2(a, terrain);
 
             Width = terrain.Texture.Width * a;
             Height = terrain.Texture.Height * a;
@@ -34,6 +28,11 @@ namespace Project5
             foreach(var tile in tiles)
             {
                 tile.Draw(x - camera.X, y - camera.Y);
+            }
+
+            foreach (var tile in tiles)
+            {
+                tile.DrawFileContent(x - camera.X, y - camera.Y);
             }
         }
     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapMockup1.ConfigManager
+namespace Project5.GridElementsRepo
 {
-    public class ConfigLoadSave
+    public class GridItem
     {
 
     }
