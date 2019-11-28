@@ -14,6 +14,7 @@ namespace Project5.ConfigManager.ConfigCategories
         //public string UserName;
         public int WindowWidth = 800;
         public int WindowHeight = 600;
+        public bool FullScreen;
 
         public UserSettings()
         {
