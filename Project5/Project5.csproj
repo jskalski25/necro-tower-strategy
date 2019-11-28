@@ -82,7 +82,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="img\castle.png" />
+    <Content Include="img\castle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="img\grass.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
