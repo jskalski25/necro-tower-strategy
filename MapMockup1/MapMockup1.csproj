@@ -47,6 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigManager\Config.cs" />
+    <Compile Include="ConfigManager\ConfigCategories\UserSettings.cs" />
+    <Compile Include="ConfigManager\ConfigLoadSave.cs" />
+    <Compile Include="ConfigManager\XmlConverters.cs" />
+    <Compile Include="GridElementsRepo\ArmyUnit.cs" />
+    <Compile Include="GridElementsRepo\Building.cs" />
+    <Compile Include="GridElementsRepo\GridFile.cs" />
+    <Compile Include="GridElementsRepo\GridItem.cs" />
+    <Compile Include="GridElementsRepo\UnitGroup.cs" />
+    <Compile Include="GridElementsRepo\UnitTypes\UndeadMeleeUnit.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +74,9 @@
     <Content Include="tile.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GridElementsRepo\BuildingTypes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

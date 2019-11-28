@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-
+using MapMockup1.ConfigManager;
 using OpenTK;
 using OpenTK.Input;
 using OpenTK.Graphics;
@@ -8,19 +8,26 @@ using OpenTK.Graphics.OpenGL;
 
 namespace MapMockup1
 {
-    class Program
+    public class Program
     {
-        static private GameWindow window;
-        static private Texture texture;
-        static private Texture hover;
-        static private Map map;
-        static private float xCamera;
-        static private float yCamera;
+        private static GameWindow window;
+        private static Texture texture;
+        private static Texture hover;
+        private static Map map;
+        private static float xCamera;
+        private static float yCamera;
 
-        static public Vector2 mousePos;
+        public static Vector2 mousePos;
+
+        public static Config Config;
 
         static void Main(string[] args)
         {
+            Config = new Config();
+            Config.Initialize();
+            Config.UserSettings.UserName += "t1";
+            Config.UserSettings.SaveSettings();
+
             window = new GameWindow(800, 600, GraphicsMode.Default, "Map Mockup");
 
             xCamera = 0.0f;
