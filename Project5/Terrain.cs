@@ -2,7 +2,7 @@
 {
     internal class Terrain
     {
-        public static Terrain Grass = new Terrain(Content.LoadTexture("img/grass.png"));
+        public static Terrain Grass = new Terrain(Content.LoadTexture("Images/grass.png"));
 
         protected Texture texture;
 

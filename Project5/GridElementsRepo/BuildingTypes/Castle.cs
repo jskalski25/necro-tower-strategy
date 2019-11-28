@@ -11,7 +11,7 @@ namespace Project5.GridElementsRepo.BuildingTypes
     {
         public Castle()
         {
-            texture = Content.LoadTexture("img/Castle.png");
+            texture = Content.LoadTexture("Images/Castle.png");
         }
     }
 }

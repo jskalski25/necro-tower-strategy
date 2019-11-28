@@ -11,9 +11,6 @@ namespace Project5.ConfigManager.ConfigCategories
 {
     public class UserSettings
     {
-        [XmlIgnore]
-        public string Path ="";
-
         //public string UserName;
         public int WindowWidth = 800;
         public int WindowHeight = 600;
@@ -23,7 +20,7 @@ namespace Project5.ConfigManager.ConfigCategories
 
         }
 
-        public void SaveSettings()
+        public void SaveSettings(string Path)
         {
             if (Path.Length > 1)
             {

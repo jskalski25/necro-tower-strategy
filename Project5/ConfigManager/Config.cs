@@ -36,18 +36,17 @@ namespace Project5.ConfigManager
             {
                 Debug.WriteLine("Brak pliku z UserSettings");
                 UserSettings = new UserSettings();
-                UserSettings.SaveSettings();
+                UserSettings.SaveSettings(UserSettingsPath);
             }
             else
             {
                 UserSettings = XmlConverters.ReadUserSettings(File.ReadAllText(UserSettingsPath));
-                UserSettings.Path = UserSettingsPath;
             }
         }
 
         public void SaveToFile()
         {
-            UserSettings.SaveSettings();
+            UserSettings.SaveSettings(UserSettingsPath);
         }
     }
 }
