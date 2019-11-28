@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
 namespace Project5
 {
-    class PolygonShader : Shader
+    public class PolygonShader : Shader
     {
         private int vertexLocation;
         private int texCoordLocation;
