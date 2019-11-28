@@ -11,7 +11,7 @@ namespace Project5
         private PolygonShader shader;
         private Map map;
 
-        public Window(Int32 width, Int32 height) : base(width, height, GraphicsMode.Default, "Hello, World!")
+        public Window(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
             Load += InitGL;
             Load += LoadShaders;
