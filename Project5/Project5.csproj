@@ -91,9 +91,6 @@
     <Content Include="zombie.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="img\image.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="TODO TODO.txt" />
   </ItemGroup>
   <ItemGroup />
