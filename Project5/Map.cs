@@ -15,7 +15,7 @@ namespace Project5
         {
             //tiles = MapGenerator.GetSample1(a, terrain); //Pusta mapa
 
-            tiles = MapTemplates.GetSample2(a, terrain);
+            tiles = MapTemplates.GetSample2(a, terrain); //Mapa z budynkami
 
             Width = terrain.Texture.Width * a;
             Height = terrain.Texture.Height * a;

@@ -27,6 +27,9 @@ namespace Project5
             return tiles;
         }
 
+        ///<summary>
+        ///Mapa z zamkami
+        ///</summary>
         public static List<Tile> GetSample2(int size, Terrain terrain)
         {
             var tiles = new List<Tile>();

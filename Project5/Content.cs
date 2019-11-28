@@ -12,6 +12,7 @@ namespace Project5
             Texture texture = new Texture(path);
             Bitmap bmp = texture.GetBitmap();
 
+            //todo popsulem Ci ;d
             //using (Graphics gfx = Graphics.FromImage(bmp))
             //{
             //    Font font = new Font("Arial", 10);
