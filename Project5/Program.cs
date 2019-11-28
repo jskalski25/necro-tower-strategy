@@ -15,7 +15,7 @@ namespace Project5
             Config config = new Config();
             config.Initialize();
 
-            using (Window window = new Window(config.UserSettings.WindowWidth, config.UserSettings.WindowHeight, "Hello, World!"))
+            using (Window window = new Window(config.UserSettings.WindowWidth, config.UserSettings.WindowHeight, "Hello, World!", config.UserSettings.WindowMode))
             {
                 window.Run(60.0);
             }

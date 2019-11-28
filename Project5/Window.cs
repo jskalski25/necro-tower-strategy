@@ -11,8 +11,10 @@ namespace Project5
         private PolygonShader shader;
         private Map map;
 
-        public Window(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
+        public Window(int width, int height, string title, WindowState windowState) : base(width, height, GraphicsMode.Default, title)
         {
+            WindowState = windowState;
+
             Load += InitGL;
             Load += LoadShaders;
             Load += LoadMedia;
