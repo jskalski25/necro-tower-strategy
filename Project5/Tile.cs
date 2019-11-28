@@ -32,7 +32,7 @@ namespace Project5
 
             foreach (Building building in Items.OfType<Building>())
             {
-                building.Texture.Render(x, y);
+                building.Texture.Render(x, y - building.Texture.Height + terrain.Texture.Height);
             }
         }
 
