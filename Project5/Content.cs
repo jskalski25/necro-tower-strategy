@@ -12,6 +12,27 @@ namespace Project5
             Texture texture = new Texture(path);
 
             textures.Add(texture);
+
+            return texture;
+        }
+
+        public static Texture CreateText(int width, int height, string text)
+        {
+            Texture texture;
+
+            using (Bitmap bmp = new Bitmap(width, height))
+            {
+                using (Graphics gfx = Graphics.FromImage(bmp))
+                {
+                    Font font = new Font("Arial", 14);
+                    gfx.DrawString(text, font, Brushes.Black, 18.0f, (bmp.Height - font.Height) / 2);
+                }
+
+                texture = new Texture(bmp);
+            }
+
+            textures.Add(texture);
+
             return texture;
         }
 

@@ -53,6 +53,7 @@
     <Compile Include="Content.cs" />
     <Compile Include="Controls\Button.cs" />
     <Compile Include="Controls\Control.cs" />
+    <Compile Include="Controls\Image.cs" />
     <Compile Include="GridElementsRepo\ArmyUnit.cs" />
     <Compile Include="GridElementsRepo\Building.cs" />
     <Compile Include="GridElementsRepo\BuildingTypes\Castle.cs" />
@@ -83,6 +84,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\banner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\button1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
