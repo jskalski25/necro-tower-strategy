@@ -56,5 +56,13 @@ namespace NecroTower.Controls
                 control.MouseDown(sender, e);
             }
         }
+
+        public void Resize(object sender, EventArgs e)
+        {
+            foreach (var control in controls)
+            {
+                control.Resize(sender, e);
+            }
+        }
     }
 }

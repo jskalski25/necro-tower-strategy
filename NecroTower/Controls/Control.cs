@@ -28,5 +28,7 @@ namespace NecroTower.Controls
             var args = e as MouseButtonEventArgs;
             if (args.X > X && args.X < X + Width && args.Y > Y && args.Y < Y + Height) Click(this, e);
         }
+
+        public virtual void Resize(object sender, EventArgs e) { return; }
     }
 }

@@ -86,6 +86,8 @@ namespace NecroTower
             base.OnResize(e);
 
             shader.SetProjection(Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, 1.0f, -1.0f));
+
+            states.Resize(this, e);
         }
     }
 }

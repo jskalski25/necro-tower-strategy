@@ -40,5 +40,10 @@ namespace NecroTower.States
         {
             controls.MouseDown(sender, e);
         }
+
+        public virtual void Resize(object sender, EventArgs e)
+        {
+            controls.Resize(sender, e);
+        }
     }
 }

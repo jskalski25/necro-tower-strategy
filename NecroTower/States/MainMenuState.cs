@@ -8,25 +8,34 @@ namespace NecroTower.States
     {
         public event EventHandler Exit;
 
+        private readonly Control exitButton;
+
         public MainMenuState()
         {
-            var exitButton = new Button
+            exitButton = new Button
             {
                 Text = "EXIT",
                 Background = "Images/image.bmp",
-                X = 100,
-                Y = 100,
                 Font = new Font(FontFamily.GenericSansSerif, 16.0f)
             };
 
-            exitButton.Click += OnStart;
+            exitButton.Click += (sender, e) =>
+            {
+                Exit(this, e);
+            };
 
             controls.Add(exitButton);
         }
 
-        private void OnStart(object sender, EventArgs e)
+        public override void Resize(object sender, EventArgs e)
         {
-            Exit?.Invoke(this, e);
+            base.Resize(sender, e);
+
+            var window = sender as Window;
+            exitButton.X = (window.Width - exitButton.Width) / 2;
+            exitButton.Y = (window.Height - exitButton.Height) / 2;
+
+            Console.WriteLine((window.Height - exitButton.Height) / 2);
         }
     }
 }
