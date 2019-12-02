@@ -19,6 +19,11 @@ namespace NecroTower
             shader = new TextureShader();
             states = new StateStack();
             mainMenu = new MainMenuState();
+
+            mainMenu.Exit += (sender, e) =>
+            {
+                Exit();
+            };
         }
 
         protected override void OnUnload(EventArgs e)
