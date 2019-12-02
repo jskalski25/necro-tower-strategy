@@ -3,6 +3,7 @@ using NecroTower.States;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 using System;
 
 namespace NecroTower
@@ -66,6 +67,13 @@ namespace NecroTower
             states.Render(this, e);
 
             Context.SwapBuffers();
+        }
+
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            states.MouseDown(this, e);
         }
 
         protected override void OnResize(EventArgs e)

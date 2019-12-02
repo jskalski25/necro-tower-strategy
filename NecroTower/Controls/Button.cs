@@ -25,6 +25,10 @@ namespace NecroTower.Controls
 
         public Font Font { private get; set; }
 
+        public override int Width => backgroundTexture.Width;
+
+        public override int Height => backgroundTexture.Height;
+
         protected void LoadBackgroundTexture(string path)
         {
             backgroundTexture = new Texture();
@@ -84,8 +88,8 @@ namespace NecroTower.Controls
         {
             base.Render(sender, e);
 
-            backgroundTexture.Render(0.0f, 0.0f);
-            textTexture.Render(0.0f, 0.0f);
+            backgroundTexture.Render(X, Y);
+            textTexture.Render(X, Y);
         }
 
         public override void Load()

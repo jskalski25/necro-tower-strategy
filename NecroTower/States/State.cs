@@ -35,5 +35,10 @@ namespace NecroTower.States
         {
             controls.Render(sender, e);
         }
+
+        public virtual void MouseDown(object sender, EventArgs e)
+        {
+            controls.MouseDown(sender, e);
+        }
     }
 }

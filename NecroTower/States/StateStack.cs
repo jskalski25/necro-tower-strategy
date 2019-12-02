@@ -37,5 +37,11 @@ namespace NecroTower.States
             var state = states.First();
             state.Render(sender, e);
         }
+
+        public void MouseDown(object sender, EventArgs e)
+        {
+            var state = states.First();
+            state.MouseDown(sender, e);
+        }
     }
 }
