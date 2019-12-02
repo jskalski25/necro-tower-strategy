@@ -7,6 +7,12 @@ namespace NecroTower.Controls
     {
         public event EventHandler Click;
 
+        public Control()
+        {
+            X = 0;
+            Y = 0;
+        }
+
         public int X { get; set; }
 
         public int Y { get; set; }

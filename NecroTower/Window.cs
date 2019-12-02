@@ -13,16 +13,23 @@ namespace NecroTower
         private readonly TextureShader shader;
         private readonly StateStack states;
         private readonly MainMenuState mainMenu;
+        private readonly GameState game;
 
         public Window(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
             shader = new TextureShader();
             states = new StateStack();
             mainMenu = new MainMenuState();
+            game = new GameState();
 
             mainMenu.Exit += (sender, e) =>
             {
                 Exit();
+            };
+
+            mainMenu.Start += (sender, e) =>
+            {
+                states.Push(game);
             };
         }
 

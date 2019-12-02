@@ -9,7 +9,7 @@ namespace NecroTower.Controls
         private Texture backgroundTexture;
         private Texture textTexture;
 
-        public Button()
+        public Button() : base()
         {
             backgroundTexture = null;
             textTexture = null;
