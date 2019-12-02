@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NecroTower.Graphics;
+using NecroTower.States;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using NecroTower.Graphics;
-using NecroTower.States;
+using System;
 
 namespace NecroTower
 {
