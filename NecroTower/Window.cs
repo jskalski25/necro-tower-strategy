@@ -9,9 +9,9 @@ namespace NecroTower
 {
     internal class Window : GameWindow
     {
-        private TextureShader shader;
-        private StateStack states;
-        private MainMenuState mainMenu;
+        private readonly TextureShader shader;
+        private readonly StateStack states;
+        private readonly MainMenuState mainMenu;
 
         public Window(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
