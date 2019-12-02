@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapMockup1", "MapMockup1\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project5", "Project5\Project5.csproj", "{23D28A15-BE69-4EEC-BA19-63F21BF245FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecroTower1", "NecroTower\NecroTower1.csproj", "{DB6C50B4-4067-4DCB-91AF-A7BA3A3AA36D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecroTower1", "NecroTower1\NecroTower1.csproj", "{DB6C50B4-4067-4DCB-91AF-A7BA3A3AA36D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
