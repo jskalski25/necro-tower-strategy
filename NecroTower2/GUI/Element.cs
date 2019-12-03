@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using OpenTK.Input;
+using OpenTK;
 
 namespace NecroTower.GUI
 {
@@ -21,10 +22,10 @@ namespace NecroTower.GUI
             Background = null;
         }
 
-        public void Render(Rectangle target)
+        public void Render(Rectangle bounds, FrameEventArgs e)
         {
-            Rectangle renderTarget = CreateTargetRectangle(target);
-            RenderElement(renderTarget);
+            Rectangle target = CreateAlignedRectangle(bounds);
+            RenderElement(target);
         }
 
         protected virtual void RenderElement(Rectangle target)
@@ -32,48 +33,48 @@ namespace NecroTower.GUI
             Background?.Render(target);
         }
 
-        public void MouseDown(Window sender, MouseEventArgs e)
+        public void MouseDown(Rectangle bounds, MouseEventArgs e)
         {
-            Rectangle renderTarget = CreateTargetRectangle(sender.ClientRectangle);
-            Point point = new Point(e.X, e.Y);
-            if (renderTarget.Contains(point)) Click?.Invoke(this, EventArgs.Empty);
+            Rectangle target = CreateAlignedRectangle(bounds);
+            Point pointer = new Point(e.X, e.Y);
+            if (target.Contains(pointer)) Click?.Invoke(this, EventArgs.Empty);
         }
 
-        private Rectangle CreateTargetRectangle(Rectangle target)
+        private Rectangle CreateAlignedRectangle(Rectangle bounds)
         {
             Rectangle renderTarget = new Rectangle
             {
-                Width = Width != 0 ? Width : target.Width,
-                Height = Height != 0 ? Height : target.Height
+                Width = Width != 0 ? Width : bounds.Width,
+                Height = Height != 0 ? Height : bounds.Height
             };
 
             switch(VerticalAlignment)
             {
                 case Alignment.Bottom:
-                    renderTarget.Y = Y + target.Y + target.Height - Height;
+                    renderTarget.Y = Y + bounds.Y + bounds.Height - Height;
                     break;
 
                 case Alignment.Center:
-                    renderTarget.Y = Y + target.Y + (target.Height - Height) / 2;
+                    renderTarget.Y = Y + bounds.Y + (bounds.Height - Height) / 2;
                     break;
 
                 default:
-                    renderTarget.Y = Y + target.Y;
+                    renderTarget.Y = Y + bounds.Y;
                     break;
             }
 
             switch (HorizontalAlignment)
             {
                 case Alignment.Right:
-                    renderTarget.X = X + target.X + target.Width - Width;
+                    renderTarget.X = X + bounds.X + bounds.Width - Width;
                     break;
 
                 case Alignment.Center:
-                    renderTarget.X = X + target.X + (target.Width - Width) / 2;
+                    renderTarget.X = X + bounds.X + (bounds.Width - Width) / 2;
                     break;
 
                 default:
-                    renderTarget.X = X + target.X;
+                    renderTarget.X = X + bounds.X;
                     break;
             }
 

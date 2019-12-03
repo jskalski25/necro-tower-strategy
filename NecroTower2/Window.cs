@@ -70,14 +70,14 @@ namespace NecroTower
         {
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit);
-            element.Render(new Rectangle(0, 0, Width, Height));
+            element.Render(ClientRectangle, e);
             Context.SwapBuffers();
         }
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
-            element.MouseDown(this, e);
+            element.MouseDown(ClientRectangle, e);
         }
 
         protected override void OnResize(EventArgs e)
