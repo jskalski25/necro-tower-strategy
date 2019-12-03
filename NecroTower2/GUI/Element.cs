@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using OpenTK.Input;
 
 namespace NecroTower.GUI
 {
     internal class Element
     {
+        public event EventHandler Click;
+
         public Element()
         {
             X = 0;
@@ -27,6 +30,13 @@ namespace NecroTower.GUI
         protected virtual void RenderElement(Rectangle target)
         {
             Background?.Render(target);
+        }
+
+        public virtual void MouseDown(Window sender, MouseEventArgs e)
+        {
+            Rectangle renderTarget = CreateTargetRectangle(sender.ClientRectangle);
+            Point point = new Point(e.X, e.Y);
+            if (renderTarget.Contains(point)) Click?.Invoke(this, EventArgs.Empty);
         }
 
         private Rectangle CreateTargetRectangle(Rectangle target)

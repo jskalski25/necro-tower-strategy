@@ -7,6 +7,7 @@ using OpenTK;
 using OpenTK.Graphics;
 using System.Drawing;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 
 namespace NecroTower
 {
@@ -30,6 +31,11 @@ namespace NecroTower
                 Height = Height / 2,
                 VerticalAlignment = GUI.Alignment.Center,
                 HorizontalAlignment = GUI.Alignment.Center
+            };
+
+            element.Click += (sender, e) =>
+            {
+                Exit();
             };
         }
 
@@ -66,6 +72,12 @@ namespace NecroTower
             GL.Clear(ClearBufferMask.ColorBufferBit);
             element.Render(new Rectangle(0, 0, Width, Height));
             Context.SwapBuffers();
+        }
+
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseDown(e);
+            element.MouseDown(this, e);
         }
 
         protected override void OnResize(EventArgs e)
