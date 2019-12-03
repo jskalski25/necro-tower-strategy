@@ -25,10 +25,10 @@ namespace NecroTower.GUI
         public void Render(Rectangle bounds, FrameEventArgs e)
         {
             Rectangle target = CreateAlignedRectangle(bounds);
-            RenderElement(target);
+            OnRender(target, e);
         }
 
-        protected virtual void RenderElement(Rectangle target)
+        protected virtual void OnRender(Rectangle target, FrameEventArgs e)
         {
             Background?.Render(target);
         }
@@ -37,7 +37,12 @@ namespace NecroTower.GUI
         {
             Rectangle target = CreateAlignedRectangle(bounds);
             Point pointer = new Point(e.X, e.Y);
-            if (target.Contains(pointer)) Click?.Invoke(this, EventArgs.Empty);
+            if (target.Contains(pointer)) OnMouseDown(target, e);
+        }
+
+        protected virtual void OnMouseDown(Rectangle target, MouseEventArgs e)
+        {
+            Click?.Invoke(this, EventArgs.Empty);
         }
 
         private Rectangle CreateAlignedRectangle(Rectangle bounds)

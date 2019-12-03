@@ -55,6 +55,7 @@
     <Compile Include="Framework\TextureShader.cs" />
     <Compile Include="GUI\Alignment.cs" />
     <Compile Include="GUI\Element.cs" />
+    <Compile Include="GUI\ElementGroup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Window.cs" />
@@ -71,7 +72,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Bitmap1.bmp">
+    <Content Include="Images\Button.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Menu.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

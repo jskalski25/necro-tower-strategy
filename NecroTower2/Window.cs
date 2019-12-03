@@ -14,29 +14,56 @@ namespace NecroTower
     internal class Window : GameWindow
     {
         private readonly Framework.TextureShader shader;
-        private readonly Framework.Texture texture;
-        private readonly GUI.Element element;
+        private readonly Framework.Texture buttonTexture;
+        private readonly Framework.Texture menuTexture;
+        private readonly GUI.Element button1;
+        private readonly GUI.Element button2;
+        private readonly GUI.ElementGroup menu;
 
         public Window(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
             WindowBorder = WindowBorder.Fixed;
 
             shader = new Framework.TextureShader();
-            texture = new Framework.Texture();
+            buttonTexture = new Framework.Texture();
+            menuTexture = new Framework.Texture();
 
-            element = new GUI.Element
+            button1 = new GUI.Element
             {
-                Background = texture,
-                Width = Width / 2,
-                Height = Height / 2,
+                Background = buttonTexture,
+                Y = 40,
+                Width = 128,
+                Height = 64,
                 VerticalAlignment = GUI.Alignment.Center,
                 HorizontalAlignment = GUI.Alignment.Center
             };
 
-            element.Click += (sender, e) =>
+            button2 = new GUI.Element
+            {
+                Background = buttonTexture,
+                Y = -40,
+                Width = 128,
+                Height = 64,
+                VerticalAlignment = GUI.Alignment.Center,
+                HorizontalAlignment = GUI.Alignment.Center
+            };
+
+            menu = new GUI.ElementGroup
+            {
+                Background = menuTexture,
+                Width = 256,
+                Height = 256,
+                VerticalAlignment = GUI.Alignment.Center,
+                HorizontalAlignment = GUI.Alignment.Center
+            };
+
+            button1.Click += (sender, e) =>
             {
                 Exit();
             };
+
+            menu.Add(button1);
+            menu.Add(button2);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -54,7 +81,8 @@ namespace NecroTower
 
             Framework.Texture.Shader = shader;
 
-            texture.LoadImage(new Bitmap("Images/Bitmap1.bmp"));
+            buttonTexture.LoadImage(new Bitmap("Images/Button.bmp"));
+            menuTexture.LoadImage(new Bitmap("Images/Menu.bmp"));
 
             GL.ClearColor(Color.Black);
         }
@@ -63,21 +91,22 @@ namespace NecroTower
         {
             base.OnUnload(e);
             shader.Free();
-            texture.Free();
+            buttonTexture.Free();
+            menuTexture.Free();
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
             GL.Clear(ClearBufferMask.ColorBufferBit);
-            element.Render(ClientRectangle, e);
+            menu.Render(ClientRectangle, e);
             Context.SwapBuffers();
         }
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
-            element.MouseDown(ClientRectangle, e);
+            menu.MouseDown(ClientRectangle, e);
         }
 
         protected override void OnResize(EventArgs e)
