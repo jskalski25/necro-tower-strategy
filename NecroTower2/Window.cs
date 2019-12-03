@@ -25,7 +25,11 @@ namespace NecroTower
 
             element = new GUI.Element
             {
-                Background = texture
+                Background = texture,
+                Width = Width / 2,
+                Height = Height / 2,
+                VerticalAlignment = GUI.Alignment.Center,
+                HorizontalAlignment = GUI.Alignment.Center
             };
         }
 

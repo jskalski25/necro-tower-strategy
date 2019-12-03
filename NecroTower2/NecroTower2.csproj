@@ -53,6 +53,7 @@
     <Compile Include="Framework\Shader.cs" />
     <Compile Include="Framework\Texture.cs" />
     <Compile Include="Framework\TextureShader.cs" />
+    <Compile Include="GUI\Alignment.cs" />
     <Compile Include="GUI\Element.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

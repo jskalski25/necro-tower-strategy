@@ -20,13 +20,7 @@ namespace NecroTower.GUI
 
         public void Render(Rectangle target)
         {
-            Rectangle renderTarget = new Rectangle
-            {
-                X = X + target.X,
-                Y = Y + target.Y,
-                Width = Width != 0 ? Width : target.Width,
-                Height = Height != 0 ? Height : target.Height
-            };
+            Rectangle renderTarget = CreateTargetRectangle(target);
             RenderElement(renderTarget);
         }
 
@@ -35,10 +29,53 @@ namespace NecroTower.GUI
             Background?.Render(target);
         }
 
+        private Rectangle CreateTargetRectangle(Rectangle target)
+        {
+            Rectangle renderTarget = new Rectangle
+            {
+                Width = Width != 0 ? Width : target.Width,
+                Height = Height != 0 ? Height : target.Height
+            };
+
+            switch(VerticalAlignment)
+            {
+                case Alignment.Bottom:
+                    renderTarget.Y = Y + target.Y + target.Height - Height;
+                    break;
+
+                case Alignment.Center:
+                    renderTarget.Y = Y + target.Y + (target.Height - Height) / 2;
+                    break;
+
+                default:
+                    renderTarget.Y = Y + target.Y;
+                    break;
+            }
+
+            switch (HorizontalAlignment)
+            {
+                case Alignment.Right:
+                    renderTarget.X = X + target.X + target.Width - Width;
+                    break;
+
+                case Alignment.Center:
+                    renderTarget.X = X + target.X + (target.Width - Width) / 2;
+                    break;
+
+                default:
+                    renderTarget.X = X + target.X;
+                    break;
+            }
+
+            return renderTarget;
+        }
+
         public int X { get; set; }
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public Framework.Texture Background { get; set; }
+        public Alignment VerticalAlignment { get; set; }
+        public Alignment HorizontalAlignment { get; set; }
     }
 }
