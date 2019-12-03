@@ -32,7 +32,7 @@ namespace NecroTower.GUI
             Background?.Render(target);
         }
 
-        public virtual void MouseDown(Window sender, MouseEventArgs e)
+        public void MouseDown(Window sender, MouseEventArgs e)
         {
             Rectangle renderTarget = CreateTargetRectangle(sender.ClientRectangle);
             Point point = new Point(e.X, e.Y);
