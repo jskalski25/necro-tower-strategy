@@ -52,6 +52,7 @@ namespace NecroTower.Framework
 
         private void WindowUnload(object sender, EventArgs e)
         {
+            TextureManager.FreeAll();
             Shader.Free();
         }
 
