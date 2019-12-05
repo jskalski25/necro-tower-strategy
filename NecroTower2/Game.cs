@@ -22,7 +22,7 @@ namespace NecroTower
 
         protected override void Render(double frametime)
         {
-            texture.Render();
+            texture.Render(Window.ClientRectangle);
         }
 
         protected override void Update(double frametime)
