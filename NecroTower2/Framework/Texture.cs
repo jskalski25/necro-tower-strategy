@@ -78,6 +78,21 @@ namespace NecroTower.Framework
             GL.DrawElements(PrimitiveType.TriangleFan, 4, DrawElementsType.UnsignedInt, 0);
         }
 
+        public void Render(int x = 0, int y = 0)
+        {
+            GL.BindVertexArray(vertexArrayObjectID);
+
+            GL.BindTexture(TextureTarget.Texture2D, textureID);
+
+            Shader.Bind();
+
+            Shader.SetModelview(Matrix4.Identity);
+            Shader.LeftMultModelview(Matrix4.CreateTranslation(x, y, 0.0f));
+            Shader.UpdateModelview();
+
+            GL.DrawElements(PrimitiveType.TriangleFan, 4, DrawElementsType.UnsignedInt, 0);
+        }
+
         public void Free()
         {
             FreeBuffers();

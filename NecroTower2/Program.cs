@@ -10,9 +10,9 @@ namespace NecroTower
     {
         static void Main(string[] args)
         {
-            using (var window = new Window(800, 600, "Hello, World!"))
+            using (var game = new Game())
             {
-                window.Run(60.0);
+                game.Start();
             }
         }
     }
