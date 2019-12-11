@@ -11,33 +11,33 @@ namespace NecroTower
 {
     internal class Game : Framework.Game
     {
-        private Framework.Texture texture;
+        private GUI.Button Button;
 
         protected override void Load(object sender, EventArgs e)
         {
-            texture = Framework.TextureManager.LoadTexture("Images/Bitmap1.bmp");
+            var window = sender as GameWindow;
+            var texture = Framework.TextureManager.LoadTexture("Images/Bitmap1.bmp");
+            Button = new GUI.Button
+            {
+                Width = texture.Width * 4,
+                Height = texture.Height * 4,
+                X = (window.Width - texture.Width * 4) / 2,
+                Y = (window.Height - texture.Height * 4) / 2,
+                Texture = texture
+            };
         }
 
         protected override void Render(object sender, FrameEventArgs e)
         {
-            var window = sender as GameWindow;
-            var rectangle = new Rectangle
-            {
-                Width = texture.Width * 8,
-                Height = texture.Height * 8,
-                X = (window.Width - texture.Width * 8) / 2,
-                Y = (window.Height - texture.Height * 8) / 2
-            };
-            texture.Render(rectangle);
+            Button.Render(sender, e);
         }
 
         protected override void Update(object sender, FrameEventArgs e)
         {
+            Button.Update(sender, e);
+
             var window = sender as GameWindow;
-            var state = Mouse.GetCursorState();
-            var point = new Point(state.X, state.Y);
-            point = window.PointToClient(point);
-            Console.WriteLine("x: " + point.X.ToString() + "\t| y: " + point.Y.ToString());
+            if (Button.Clicked) window.Close();
         }
     }
 }
