@@ -38,7 +38,7 @@ namespace NecroTower.Framework
 
         public void Start()
         {
-            Window.Run(60.0);
+            Window.Run();
         }
 
         private void WindowResize(object sender, EventArgs e)

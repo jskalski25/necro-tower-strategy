@@ -55,7 +55,7 @@ namespace NecroTower.GUI
 
         public void Update(object sender, FrameEventArgs e)
         {
-            var window = sender as GameWindow;
+            var window = sender as NativeWindow;
             var state = Mouse.GetCursorState();
             var point = new Point(state.X, state.Y);
             point = window.PointToClient(point);

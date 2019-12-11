@@ -15,7 +15,7 @@ namespace NecroTower
 
         protected override void Load(object sender, EventArgs e)
         {
-            var window = sender as GameWindow;
+            var window = sender as NativeWindow;
             var texture = Framework.TextureManager.LoadTexture("Images/Bitmap1.bmp");
             Button = new GUI.Button
             {
@@ -36,7 +36,7 @@ namespace NecroTower
         {
             Button.Update(sender, e);
 
-            var window = sender as GameWindow;
+            var window = sender as NativeWindow;
             if (Button.Clicked) window.Close();
         }
     }
