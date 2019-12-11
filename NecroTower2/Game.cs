@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTK;
+using OpenTK.Input;
+using System.Drawing;
 
 namespace NecroTower
 {
@@ -10,24 +13,31 @@ namespace NecroTower
     {
         private Framework.Texture texture;
 
-        protected override void Initialize()
-        {
-            texture = null;
-        }
-
-        protected override void Load()
+        protected override void Load(object sender, EventArgs e)
         {
             texture = Framework.TextureManager.LoadTexture("Images/Bitmap1.bmp");
         }
 
-        protected override void Render(double frametime)
+        protected override void Render(object sender, FrameEventArgs e)
         {
-            texture.Render(Window.ClientRectangle);
+            var window = sender as GameWindow;
+            var rectangle = new Rectangle
+            {
+                Width = texture.Width * 8,
+                Height = texture.Height * 8,
+                X = (window.Width - texture.Width * 8) / 2,
+                Y = (window.Height - texture.Height * 8) / 2
+            };
+            texture.Render(rectangle);
         }
 
-        protected override void Update(double frametime)
+        protected override void Update(object sender, FrameEventArgs e)
         {
-            // TODO
+            var window = sender as GameWindow;
+            var state = Mouse.GetCursorState();
+            var point = new Point(state.X, state.Y);
+            point = window.PointToClient(point);
+            Console.WriteLine("x: " + point.X.ToString() + "\t| y: " + point.Y.ToString());
         }
     }
 }

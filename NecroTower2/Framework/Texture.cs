@@ -78,7 +78,7 @@ namespace NecroTower.Framework
             GL.DrawElements(PrimitiveType.TriangleFan, 4, DrawElementsType.UnsignedInt, 0);
         }
 
-        public void Render(int x = 0, int y = 0)
+        public void Render(int x, int y)
         {
             GL.BindVertexArray(vertexArrayObjectID);
 

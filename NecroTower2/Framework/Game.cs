@@ -15,7 +15,7 @@ namespace NecroTower.Framework
     {
         private readonly TextureShader Shader;
 
-        public GameWindow Window { get; private set; }
+        private readonly GameWindow Window;
 
         public Game()
         {
@@ -34,8 +34,6 @@ namespace NecroTower.Framework
             Window.Load += WindowLoad;
             Window.Unload += WindowUnload;
             Window.Resize += WindowResize;
-
-            Initialize();
         }
 
         public void Start()
@@ -71,30 +69,28 @@ namespace NecroTower.Framework
 
             GL.ClearColor(Color.Black);
 
-            Load();
+            Load(sender, e);
         }
 
         private void WindowRender(object sender, FrameEventArgs e)
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            Render(e.Time);
+            Render(sender, e);
 
             Window.Context.SwapBuffers();
         }
 
         private void WindowUpdate(object sender, FrameEventArgs e)
         {
-            Update(e.Time);
+            Update(sender, e);
         }
 
-        protected abstract void Initialize();
+        protected abstract void Load(object sender, EventArgs e);
 
-        protected abstract void Load();
+        protected abstract void Render(object sender, FrameEventArgs e);
 
-        protected abstract void Render(double frametime);
-
-        protected abstract void Update(double frametime);
+        protected abstract void Update(object sender, FrameEventArgs e);
 
         public void Dispose()
         {
