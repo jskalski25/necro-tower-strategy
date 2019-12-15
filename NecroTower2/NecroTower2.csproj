@@ -51,10 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\Game.cs" />
-    <Compile Include="Framework\Shader.cs" />
-    <Compile Include="Framework\Texture.cs" />
-    <Compile Include="Framework\TextureManager.cs" />
-    <Compile Include="Framework\TextureShader.cs" />
+    <Compile Include="Framework\Graphics\Shader.cs" />
+    <Compile Include="Framework\Graphics\Texture.cs" />
+    <Compile Include="Framework\Graphics\TextureManager.cs" />
+    <Compile Include="Framework\Graphics\TextureShader.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GUI\Button.cs" />
     <Compile Include="Program.cs" />
@@ -62,10 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Framework\GLSL\shader.frag">
+    <None Include="Framework\Graphics\shader.frag">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Framework\GLSL\shader.vert">
+    <None Include="Framework\Graphics\shader.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="OpenTK.dll.config" />

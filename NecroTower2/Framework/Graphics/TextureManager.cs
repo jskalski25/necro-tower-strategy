@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace NecroTower.Framework
+namespace NecroTower.Framework.Graphics
 {
     internal static class TextureManager
     {

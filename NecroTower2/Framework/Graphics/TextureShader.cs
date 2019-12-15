@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
-namespace NecroTower.Framework
+namespace NecroTower.Framework.Graphics
 {
     internal class TextureShader : Shader
     {
@@ -28,10 +28,10 @@ namespace NecroTower.Framework
 
         public override void LoadProgram()
         {
-            var vertexSource = LoadShaderSource("Framework/GLSL/shader.vert");
+            var vertexSource = LoadShaderSource("Framework/Graphics/shader.vert");
             var vertexShader = LoadShader(ShaderType.VertexShader, vertexSource);
 
-            var fragmentSource = LoadShaderSource("Framework/GLSL/shader.frag");
+            var fragmentSource = LoadShaderSource("Framework/Graphics/shader.frag");
             var fragmentShader = LoadShader(ShaderType.FragmentShader, fragmentSource);
 
             programID = GL.CreateProgram();

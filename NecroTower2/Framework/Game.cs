@@ -13,13 +13,13 @@ namespace NecroTower.Framework
 {
     internal abstract class Game : IDisposable
     {
-        private readonly TextureShader Shader;
+        private readonly Graphics.TextureShader Shader;
 
         private readonly GameWindow Window;
 
         public Game()
         {
-            Shader = new TextureShader();
+            Shader = new Graphics.TextureShader();
 
             Window = new GameWindow
             {
@@ -50,7 +50,7 @@ namespace NecroTower.Framework
 
         private void WindowUnload(object sender, EventArgs e)
         {
-            TextureManager.FreeAll();
+            Graphics.TextureManager.FreeAll();
             Shader.Free();
         }
 
@@ -65,7 +65,7 @@ namespace NecroTower.Framework
             Shader.SetModelview(Matrix4.Identity);
             Shader.UpdateModelview();
 
-            Texture.Shader = Shader;
+            Graphics.Texture.Shader = Shader;
 
             GL.ClearColor(Color.Black);
 

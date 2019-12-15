@@ -11,9 +11,9 @@ namespace NecroTower.GUI
 {
     internal class Button
     {
-        private Framework.Texture texture;
+        private Framework.Graphics.Texture texture;
 
-        public Framework.Texture Texture {
+        public Framework.Graphics.Texture Texture {
             get => texture; 
             set
             {

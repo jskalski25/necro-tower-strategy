@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL;
 
-namespace NecroTower.Framework
+namespace NecroTower.Framework.Graphics
 {
     internal abstract class Shader
     {

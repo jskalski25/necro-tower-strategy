@@ -9,7 +9,7 @@ using OpenTK.Graphics.OpenGL;
 using System.Drawing.Imaging;
 using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 
-namespace NecroTower.Framework
+namespace NecroTower.Framework.Graphics
 {
     internal class Texture
     {
