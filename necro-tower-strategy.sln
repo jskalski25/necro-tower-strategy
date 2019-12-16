@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecroTower1", "NecroTower1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecroTower2", "NecroTower2\NecroTower2.csproj", "{887ACAFE-0218-4785-8CF4-B359913A29AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NecroTower3", "NecroTower3\NecroTower3.csproj", "{7267F6E2-B750-448E-B714-80D7D6A4F425}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{887ACAFE-0218-4785-8CF4-B359913A29AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{887ACAFE-0218-4785-8CF4-B359913A29AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{887ACAFE-0218-4785-8CF4-B359913A29AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7267F6E2-B750-448E-B714-80D7D6A4F425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7267F6E2-B750-448E-B714-80D7D6A4F425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7267F6E2-B750-448E-B714-80D7D6A4F425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7267F6E2-B750-448E-B714-80D7D6A4F425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
