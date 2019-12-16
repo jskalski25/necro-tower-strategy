@@ -7,12 +7,14 @@ namespace NecroTower
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class NecroTower : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        Screen screen;
         
-        public Game1()
+        public NecroTower()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -26,7 +28,11 @@ namespace NecroTower
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.ApplyChanges();
+
+            IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -40,7 +46,10 @@ namespace NecroTower
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            Screen.Content = Content;
+            Screen.Sprites = spriteBatch;
+
+            screen = new MainScreen();
         }
 
         /// <summary>
@@ -62,7 +71,9 @@ namespace NecroTower
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            screen = screen?.Update();
+
+            if (screen == null) Exit();
 
             base.Update(gameTime);
         }
@@ -73,9 +84,9 @@ namespace NecroTower
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            screen.Draw();
 
             base.Draw(gameTime);
         }
