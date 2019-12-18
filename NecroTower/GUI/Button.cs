@@ -11,14 +11,25 @@ namespace NecroTower.GUI
 {
     public enum GUIButtonState
     {
-        Default, Hovered, Clicked
+        Default, Hovered, Pressed
     }
 
-    internal class GUIButton
+    internal class Button
     {
         private MouseState mouseState;
         private Texture2D texture;
         private Vector2 position;
+
+        private SpriteFont font;
+        private string text;
+
+        public float X { get => position.X; set => position.X = value; }
+
+        public float Y { get => position.Y; set => position.Y = value; }
+
+        public float Width { get => texture.Width; }
+
+        public float Height { get => texture.Height; }
 
         public GUIButtonState State { get; private set; }
 
@@ -38,10 +49,12 @@ namespace NecroTower.GUI
             }
         }
 
-        public void Initialize(Texture2D texture, Vector2 position)
+        public void Initialize(Texture2D texture, Vector2 position, string text, SpriteFont font)
         {
             this.texture = texture;
             this.position = position;
+            this.text = text;
+            this.font = font;
         }
 
         public void Update()
@@ -51,7 +64,7 @@ namespace NecroTower.GUI
             {
                 if (mouseState.LeftButton == ButtonState.Pressed)
                 {
-                    State = GUIButtonState.Clicked;
+                    State = GUIButtonState.Pressed;
                 }
                 else
                 {
@@ -66,7 +79,11 @@ namespace NecroTower.GUI
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, Color.White);
+
+            var textMiddlePoint = font.MeasureString(text) / 2;
+            var textPosition = Bounds.Center.ToVector2();
+            spriteBatch.DrawString(font, text, textPosition, Color.Black, 0f, textMiddlePoint, 1f, SpriteEffects.None, 0f);
         }
     }
 }

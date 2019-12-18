@@ -46,8 +46,11 @@ namespace NecroTower
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            Fonts.Initialize(Content);
+
             Screen.Content = Content;
             Screen.Sprites = spriteBatch;
+            Screen.Graphics = graphics;
 
             screen = new MainScreen();
         }

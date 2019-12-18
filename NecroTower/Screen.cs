@@ -14,8 +14,9 @@ namespace NecroTower
     {
         public static SpriteBatch Sprites;
         public static ContentManager Content;
+        public static GraphicsDeviceManager Graphics;
 
-        public Screen()
+        protected Screen()
         {
             Initialize();
             LoadContent();

@@ -11,16 +11,19 @@ namespace NecroTower
 {
     internal class MainScreen : Screen
     {
-        GUIButton button;
+        Button button;
 
         public override void Initialize()
         {
-            button = new GUIButton();
+            button = new Button();
         }
 
         public override void LoadContent()
         {
-            button.Initialize(Content.Load<Texture2D>("Graphics\\Bitmap1"), Vector2.Zero);
+            button.Initialize(Content.Load<Texture2D>("Graphics/Bitmap1"), Vector2.Zero, "Start", Fonts.Default);
+            var rectangle = Graphics.GraphicsDevice.Viewport.Bounds;
+            button.X = (rectangle.Width - button.Width) / 2;
+            button.Y = (rectangle.Height - button.Height) / 2;
         }
 
         public override void Draw()
@@ -34,7 +37,7 @@ namespace NecroTower
         {
             button.Update();
 
-            if (button.State == GUIButtonState.Clicked)
+            if (button.State == GUIButtonState.Pressed)
             {
                 return null;
             }
