@@ -20,29 +20,29 @@ namespace NecroTower
 
         public override void LoadContent()
         {
-            button.Initialize(Content.Load<Texture2D>("Graphics/Bitmap1"), Vector2.Zero, "Start", Fonts.Default);
+            button.Initialize(Vector2.Zero, "Start", Fonts.Default, Content.Load<Texture2D>("Graphics/Bitmap1"));
             var rectangle = Graphics.GraphicsDevice.Viewport.Bounds;
             button.X = (rectangle.Width - button.Width) / 2;
             button.Y = (rectangle.Height - button.Height) / 2;
-        }
-
-        public override void Draw()
-        {
-            Sprites.Begin();
-            button.Draw(Sprites);
-            Sprites.End();
         }
 
         public override Screen Update()
         {
             button.Update();
 
-            if (button.State == GUIButtonState.Pressed)
+            if (button.Clicked)
             {
-                return null;
+                return new GameScreen();
             }
 
             return this;
+        }
+
+        public override void Draw()
+        {
+            Sprites.Begin();
+            button.Draw();
+            Sprites.End();
         }
     }
 }

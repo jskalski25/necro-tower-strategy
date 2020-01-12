@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using NecroTower.Mapping;
 
 namespace NecroTower
 {
@@ -9,14 +10,14 @@ namespace NecroTower
     /// </summary>
     public class NecroTower : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        GraphicsDeviceManager Graphics;
+        SpriteBatch Sprites;
 
         Screen screen;
         
         public NecroTower()
         {
-            graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
@@ -28,9 +29,9 @@ namespace NecroTower
         /// </summary>
         protected override void Initialize()
         {
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 600;
-            graphics.ApplyChanges();
+            Graphics.PreferredBackBufferWidth = 800;
+            Graphics.PreferredBackBufferHeight = 600;
+            Graphics.ApplyChanges();
 
             IsMouseVisible = true;
 
@@ -44,13 +45,14 @@ namespace NecroTower
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            Sprites = new SpriteBatch(GraphicsDevice);
 
             Fonts.Initialize(Content);
+            Terrain.Initialize(Content);
 
-            Screen.Content = Content;
-            Screen.Sprites = spriteBatch;
-            Screen.Graphics = graphics;
+            GameObject.Content = Content;
+            GameObject.Sprites = Sprites;
+            GameObject.Graphics = Graphics;
 
             screen = new MainScreen();
         }
@@ -71,8 +73,10 @@ namespace NecroTower
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
 
             screen = screen?.Update();
 

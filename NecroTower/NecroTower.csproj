@@ -46,12 +46,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Fonts.cs" />
+    <Compile Include="GameObject.cs" />
+    <Compile Include="GameScreen.cs" />
+    <Compile Include="Mapping\Map.cs" />
+    <Compile Include="Mapping\MapGenerator.cs" />
+    <Compile Include="Mapping\Terrain.cs" />
     <Compile Include="NecroTower.cs" />
     <Compile Include="GUI\Button.cs" />
     <Compile Include="MainScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen.cs" />
+    <Compile Include="Mapping\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -114,6 +120,7 @@
     <None Include="Content\Fonts\Arial.spritefont" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Graphics\Bitmap2.bmp" />
     <Content Include="Content\Graphics\Bitmap1.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

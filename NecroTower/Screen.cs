@@ -10,12 +10,8 @@ using Microsoft.Xna.Framework.Content;
 
 namespace NecroTower
 {
-    internal abstract class Screen
+    internal abstract class Screen : GameObject
     {
-        public static SpriteBatch Sprites;
-        public static ContentManager Content;
-        public static GraphicsDeviceManager Graphics;
-
         protected Screen()
         {
             Initialize();
