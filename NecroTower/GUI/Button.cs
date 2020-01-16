@@ -11,6 +11,7 @@ namespace NecroTower.GUI
 {
     internal class Button : GameObject
     {
+        /*
         private MouseState mouseState;
         private Texture2D defaultTexture;
         private Texture2D hoverTexture;
@@ -86,6 +87,6 @@ namespace NecroTower.GUI
                 var textPosition = Bounds.Center.ToVector2();
                 Sprites.DrawString(font, text, textPosition, Color.Black, 0f, textMiddlePoint, 1f, SpriteEffects.None, 0f);
             }
-        }
+        }*/
     }
 }

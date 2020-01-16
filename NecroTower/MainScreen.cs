@@ -9,24 +9,20 @@ using NecroTower.GUI;
 
 namespace NecroTower
 {
-    internal class MainScreen : Screen
+    internal class MainScreen : GameObject, IScreen
     {
         Button button;
 
-        public override void Initialize()
+        public MainScreen()
         {
             button = new Button();
-        }
-
-        public override void LoadContent()
-        {
-            button.Initialize(Vector2.Zero, "Start", Fonts.Default, Content.Load<Texture2D>("Graphics/Bitmap1"));
+            button.Initialize(Vector2.Zero, "Start", Fonts.Default, Content.Load<Texture2D>("Graphics/tiny_button"));
             var rectangle = Graphics.GraphicsDevice.Viewport.Bounds;
             button.X = (rectangle.Width - button.Width) / 2;
             button.Y = (rectangle.Height - button.Height) / 2;
         }
 
-        public override Screen Update()
+        public IScreen Update()
         {
             button.Update();
 
@@ -38,7 +34,7 @@ namespace NecroTower
             return this;
         }
 
-        public override void Draw()
+        public void Draw()
         {
             Sprites.Begin();
             button.Draw();

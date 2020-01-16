@@ -9,30 +9,25 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace NecroTower
 {
-    internal class GameScreen : Screen
+    internal class GameScreen : GameObject, IScreen
     {
         private Vector2 Camera;
         private Map Map;
 
-        public override void Initialize()
+        public GameScreen()
         {
-            Map = MapGenerator.Default();
+            Map = MapGen.Default();
             Camera = new Vector2(0, 0);
         }
 
-        public override void LoadContent()
-        {
-            // TODO
-        }
-
-        public override Screen Update()
+        public IScreen Update()
         {
             return this;
         }
 
-        public override void Draw()
+        public void Draw()
         {
-            Sprites.Begin(SpriteSortMode.Deferred, BlendState.Additive);
+            Sprites.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             Map.Draw(Camera);
             Sprites.End();
         }

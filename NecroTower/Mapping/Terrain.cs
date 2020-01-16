@@ -16,7 +16,7 @@ namespace NecroTower.Mapping
         {
             Default = new Terrain
             {
-                Texture = Content.Load<Texture2D>("Graphics/Bitmap2")
+                Texture = Content.Load<Texture2D>("Graphics/tiny_tile")
             };
         }
 

@@ -13,7 +13,7 @@ namespace NecroTower
         GraphicsDeviceManager Graphics;
         SpriteBatch Sprites;
 
-        Screen screen;
+        IScreen screen;
         
         public NecroTower()
         {

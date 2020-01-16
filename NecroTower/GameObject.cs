@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NecroTower
 {
-    internal class GameObject
+    internal abstract class GameObject
     {
         public static SpriteBatch Sprites;
         public static ContentManager Content;
