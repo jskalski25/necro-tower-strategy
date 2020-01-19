@@ -15,18 +15,21 @@ namespace NecroTower
 
         public MainScreen()
         {
-            button = new Button();
-            button.Initialize(Vector2.Zero, "Start", Fonts.Default, Content.Load<Texture2D>("Graphics/tiny_button"));
-            var rectangle = Graphics.GraphicsDevice.Viewport.Bounds;
-            button.X = (rectangle.Width - button.Width) / 2;
-            button.Y = (rectangle.Height - button.Height) / 2;
+            var rect = Graphics.GraphicsDevice.Viewport.Bounds;
+            button = new Button
+            {
+                Text = "Start",
+                Background = Content.Load<Texture2D>("Graphics/tiny_button")
+            };
+            button.X = (rect.Width - button.Width) / 2;
+            button.Y = (rect.Height - button.Height) / 2;
         }
 
         public IScreen Update()
         {
             button.Update();
 
-            if (button.Clicked)
+            if (button.IsDown)
             {
                 return new GameScreen();
             }

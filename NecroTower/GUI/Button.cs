@@ -11,82 +11,69 @@ namespace NecroTower.GUI
 {
     internal class Button : GameObject
     {
-        /*
-        private MouseState mouseState;
-        private Texture2D defaultTexture;
-        private Texture2D hoverTexture;
         private Vector2 position;
 
-        private SpriteFont font;
-        private string text;
+        public Vector2 Position { get => position; set => position = value; }
 
         public float X { get => position.X; set => position.X = value; }
-
         public float Y { get => position.Y; set => position.Y = value; }
 
-        public float Width { get => defaultTexture.Width; }
-
-        public float Height { get => defaultTexture.Height; }
-
-        public bool Pressed { get; private set; }
-
-        public bool Hovered { get; private set; }
-
-        public bool Clicked { get; private set; }
+        public float Width { get => Background.Width; }
+        public float Height { get => Background.Height; }
 
         public Rectangle Bounds
         {
             get
             {
-                var point = position.ToPoint();
-                var rectangle = new Rectangle
+                return new Rectangle
                 {
-                    X = point.X,
-                    Y = point.Y,
-                    Width = defaultTexture.Width,
-                    Height = defaultTexture.Height
+                    X = (int)Position.X,
+                    Y = (int)Position.Y,
+                    Width = (int)Width,
+                    Height = (int)Height
                 };
-                return rectangle;
             }
         }
 
-        public void Initialize(Vector2 position, string text, SpriteFont font, Texture2D defaultTexture, Texture2D hoverTexture = null)
+        public SpriteFont Font { get; set; }
+
+        public string Text { get; set; }
+
+        public Texture2D Background { get; set; }
+
+        public Button()
         {
-            this.defaultTexture = defaultTexture;
-            this.hoverTexture = hoverTexture;
-            this.position = position;
-            this.text = text;
-            this.font = font;
+            Font = Fonts.Default;
         }
 
-        private bool wasPressed;
+        public bool IsDown { get; private set; }
 
         public void Update()
         {
-            wasPressed = Pressed;
-            mouseState = Mouse.GetState();
-            Hovered = Bounds.Contains(mouseState.Position);
-            Pressed = Hovered && mouseState.LeftButton == ButtonState.Pressed;
-            Clicked = Pressed && !wasPressed;
+            var mouse = Mouse.GetState();
+            if (Bounds.Contains(mouse.Position) && mouse.LeftButton == ButtonState.Pressed)
+            {
+                IsDown = true;
+            }
+            else
+            {
+                IsDown = false;
+            }
         }
 
         public void Draw()
         {
-            if (Hovered && hoverTexture != null)
+            if (Background != null)
             {
-                Sprites.Draw(hoverTexture, position, Color.White);
-            }
-            else
-            {
-                Sprites.Draw(defaultTexture, position, Color.White);
+                Sprites.Draw(Background, Position, Color.White);
             }
 
-            if (text != null)
+            if (Text != null && Font != null)
             {
-                var textMiddlePoint = font.MeasureString(text) / 2;
+                var textMiddlePoint = Font.MeasureString(Text) / 2;
                 var textPosition = Bounds.Center.ToVector2();
-                Sprites.DrawString(font, text, textPosition, Color.Black, 0f, textMiddlePoint, 1f, SpriteEffects.None, 0f);
+                Sprites.DrawString(Font, Text, textPosition, Color.Black, 0f, textMiddlePoint, 1f, SpriteEffects.None, 0f);
             }
-        }*/
+        }
     }
 }
