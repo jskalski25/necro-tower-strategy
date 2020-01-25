@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace NecroTower.Mapping
 {
-    internal class Terrain
+    internal class Terrain // TODO: replace this useless class
     {
         public static Terrain Default;
 

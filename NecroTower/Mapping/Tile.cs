@@ -9,48 +9,32 @@ namespace NecroTower.Mapping
 {
     internal class Tile : GameObject
     {
-        private Point position;
-        private Vector2 offset;
+        private Point coords;
+        private Vector2 position;
 
         public Terrain Terrain;
 
-        public int X
-        {
-            get => position.X;
+        public int X { get => coords.X; set => coords.X = value; }
 
-            set
-            {
-                position.X = value;
-            }
-        }
-
-        public int Y
-        {
-            get => position.Y;
-
-            set
-            {
-                position.Y = value;
-            }
-        }
+        public int Y { get => coords.Y; set => coords.Y = value; }
 
         private void UpdateOffset()
         {
             double angle = Math.PI / 4;
             var temp = new Vector2
             {
-                X = (float)((Math.Cos(angle) * position.X - Math.Sin(angle) * position.Y) * Math.Sin(angle)),
-                Y = (float)((Math.Cos(angle) * position.Y + Math.Sin(angle) * position.X) * Math.Cos(angle))
+                X = (float)((Math.Cos(angle) * coords.X - Math.Sin(angle) * coords.Y) * Math.Sin(angle)),
+                Y = (float)((Math.Cos(angle) * coords.Y + Math.Sin(angle) * coords.X) * Math.Cos(angle))
             };
-            offset.X = (temp.X - 0.5f) * Terrain.Texture.Width;
-            offset.Y = temp.Y * Terrain.Texture.Height;
+            position.X = (temp.X - 0.5f) * Terrain.Texture.Width;
+            position.Y = temp.Y * Terrain.Texture.Height;
         }
 
         public void Draw(Vector2 camera)
         {
             UpdateOffset();
-            Vector2 fullOffset = camera + offset;
-            Sprites.Draw(Terrain.Texture, fullOffset, Color.White);
+            Vector2 offset = camera + position;
+            Sprites.Draw(Terrain.Texture, offset, Color.White);
         }
     }
 }

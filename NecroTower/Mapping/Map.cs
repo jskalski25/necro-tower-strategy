@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NecroTower.Mapping
 {
-    internal class Map : GameObject
+    internal class Map : GameObject // TODO: simplify this class
     {
         private List<Tile> tiles;
         private int size;

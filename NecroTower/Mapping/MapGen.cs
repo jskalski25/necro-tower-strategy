@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NecroTower.Mapping
 {
-    internal static class MapGen
+    internal static class MapGen // TODO: add some actual map gen
     {
         public static Map Default()
         {
