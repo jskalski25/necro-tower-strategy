@@ -11,39 +11,39 @@ namespace NecroTower.GUI
 {
     internal class Button : GameObject
     {
-        private Vector2 position;
+        private Rectangle rectangle;
+        private Texture2D background;
 
-        public Vector2 Position { get => position; set => position = value; }
+        public int X { get => rectangle.X; set => rectangle.X = value; }
+        public int Y { get => rectangle.Y; set => rectangle.Y = value; }
 
-        public float X { get => position.X; set => position.X = value; }
-        public float Y { get => position.Y; set => position.Y = value; }
+        public int Width { get => rectangle.Width; set => rectangle.Width = value; }
+        public int Height { get => rectangle.Height; set => rectangle.Height = value; }
 
-        public float Width { get => Background.Width; }
-        public float Height { get => Background.Height; }
-
-        public Rectangle Bounds
-        {
-            get
-            {
-                return new Rectangle
-                {
-                    X = (int)Position.X,
-                    Y = (int)Position.Y,
-                    Width = (int)Width,
-                    Height = (int)Height
-                };
-            }
-        }
+        public Rectangle Bounds { get => rectangle; }
 
         public SpriteFont Font { get; set; }
 
         public string Text { get; set; }
 
-        public Texture2D Background { get; set; }
+        public Texture2D Background
+        {
+            get => background;
+            set
+            {
+                if (Bounds.Size.Equals(Point.Zero))
+                {
+                    Width = value.Width;
+                    Height = value.Height;
+                }
+                background = value;
+            }
+        }
 
         public Button()
         {
             Font = Fonts.Default;
+            rectangle = new Rectangle();
         }
 
         public bool IsDown { get; private set; }
@@ -65,7 +65,7 @@ namespace NecroTower.GUI
         {
             if (Background != null)
             {
-                Sprites.Draw(Background, Position, Color.White);
+                Sprites.Draw(Background, Bounds, Color.White);
             }
 
             if (Text != null && Font != null)
