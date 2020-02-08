@@ -14,7 +14,9 @@ namespace NecroTower
         static void Main()
         {
             using (var game = new NecroTower())
+            {
                 game.Run();
+            }
         }
     }
 }
