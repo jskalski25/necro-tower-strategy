@@ -20,7 +20,7 @@ namespace NecroTower.GUI
         public int Width { get => rectangle.Width; set => rectangle.Width = value; }
         public int Height { get => rectangle.Height; set => rectangle.Height = value; }
 
-        public Rectangle Bounds { get => rectangle; }
+        public Rectangle Bounds { get => rectangle; set => rectangle = value; }
 
         public SpriteFont Font { get; set; }
 
@@ -43,7 +43,7 @@ namespace NecroTower.GUI
         public Button()
         {
             Font = Fonts.Default;
-            rectangle = new Rectangle();
+            Bounds = new Rectangle();
         }
 
         public bool IsDown { get; private set; }
