@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{23D28A15-BE69-4EEC-BA19-63F21BF245FB}</ProjectGuid>
+    <ProjectGuid>{BF2196E6-7C9B-4507-B47A-0F03550AA337}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Project5</RootNamespace>
-    <AssemblyName>Project5</AssemblyName>
+    <RootNamespace>NecroTower2</RootNamespace>
+    <AssemblyName>NecroTower2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,34 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Content.cs" />
-    <Compile Include="Grass.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="PolygonShader.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Components\Button.cs" />
+    <Compile Include="Components\Screens\MainMenuScreen.cs" />
+    <Compile Include="Components\Screens\Screen.cs" />
+    <Compile Include="Graphics\Shader.cs" />
+    <Compile Include="Graphics\Texture2D.cs" />
+    <Compile Include="Graphics\TextureManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shader.cs" />
-    <Compile Include="Terrain.cs" />
-    <Compile Include="Texture.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="Window.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Graphics\GLSL\shader.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphics\GLSL\shader.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
-    <None Include="Shaders\shader.frag">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Shaders\shader.vert">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="grass.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="image.png">
+    <Content Include="Textures\test.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

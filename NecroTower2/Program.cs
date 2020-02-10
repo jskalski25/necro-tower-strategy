@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project5
+namespace NecroTower2
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            using (Window window = new Window())
+            using (var game = new Game())
             {
-                window.Run(60.0);
+                game.Run();
             }
         }
     }
