@@ -46,11 +46,17 @@ namespace NecroTower2
             base.OnLoad(e);
         }
 
+        protected override void OnUpdateFrame(FrameEventArgs e)
+        {
+            screen.OnUpdate(this, e);
+            base.OnUpdateFrame(e);
+        }
+
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            screen.OnRender();
+            screen.OnRender(this, e);
 
             Context.SwapBuffers();
             base.OnRenderFrame(e);

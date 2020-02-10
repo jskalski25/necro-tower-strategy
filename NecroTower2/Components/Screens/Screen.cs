@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NecroTower2.Graphics;
+using OpenTK;
 
 namespace NecroTower2.Components.Screens
 {
@@ -11,22 +12,22 @@ namespace NecroTower2.Components.Screens
     {
         private TextureManager textures;
 
-        public event EventHandler Render;
-        public event EventHandler Update;
+        public event EventHandler<FrameEventArgs> Render;
+        public event EventHandler<FrameEventArgs> Update;
 
         public Screen(TextureManager textures)
         {
             this.textures = textures;
         }
 
-        public virtual void OnRender()
+        public virtual void OnRender(object sender, FrameEventArgs e)
         {
-            Render?.Invoke(this, EventArgs.Empty);
+            Render?.Invoke(sender, e);
         }
 
-        public virtual void OnUpdate()
+        public virtual void OnUpdate(object sender, FrameEventArgs e)
         {
-            Update?.Invoke(this, EventArgs.Empty);
+            Update?.Invoke(sender, e);
         }
     }
 }

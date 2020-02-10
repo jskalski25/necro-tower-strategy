@@ -17,6 +17,13 @@ namespace NecroTower2.Components.Screens
             {
                 Background = textures.LoadTexture("Textures/test.png")
             };
+
+            button.Click += Button_Click;
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
