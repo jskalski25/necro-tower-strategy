@@ -11,7 +11,7 @@ namespace NecroTower2.Components.Screens
     {
         private Button button;
 
-        public MainMenuScreen(TextureManager textures) : base(textures)
+        public MainMenuScreen(TextureManager textures, Game game) : base(textures, game)
         {
             button = new Button(this)
             {
@@ -23,7 +23,7 @@ namespace NecroTower2.Components.Screens
 
         private void Button_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            game.Close();
         }
     }
 }

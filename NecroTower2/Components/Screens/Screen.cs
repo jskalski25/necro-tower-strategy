@@ -10,14 +10,16 @@ namespace NecroTower2.Components.Screens
 {
     internal class Screen
     {
-        private TextureManager textures;
+        protected TextureManager textures;
+        protected Game game;
 
         public event EventHandler<FrameEventArgs> Render;
         public event EventHandler<FrameEventArgs> Update;
 
-        public Screen(TextureManager textures)
+        public Screen(TextureManager textures, Game game)
         {
             this.textures = textures;
+            this.game = game;
         }
 
         public virtual void OnRender(object sender, FrameEventArgs e)

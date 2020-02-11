@@ -24,6 +24,11 @@ namespace NecroTower2
             Title = "Hello, World!";
         }
 
+        public void SetScreen(Screen screen)
+        {
+            this.screen = screen;
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             GL.ClearColor(Color.Black);
@@ -41,7 +46,7 @@ namespace NecroTower2
             shader.SetProjection(Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, -1.0f, 1.0f));
             shader.UpdateProjection();
 
-            screen = new MainMenuScreen(textures);
+            screen = new MainMenuScreen(textures, this);
 
             base.OnLoad(e);
         }
