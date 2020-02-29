@@ -9,6 +9,7 @@ using OpenTK.Graphics.OpenGL;
 using System.Drawing;
 using NecroTower2.Graphics;
 using NecroTower2.Components.Screens;
+using OpenTK.Input;
 
 namespace NecroTower2
 {
@@ -49,6 +50,18 @@ namespace NecroTower2
             screen = new MainMenuScreen(textures, this);
 
             base.OnLoad(e);
+        }
+
+        protected override void OnMouseMove(MouseMoveEventArgs e)
+        {
+            screen.OnMouseMove(this, e);
+            base.OnMouseMove(e);
+        }
+
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            screen.OnMouseDown(this, e);
+            base.OnMouseDown(e);
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)

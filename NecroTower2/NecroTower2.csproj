@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Screens\GameScreen.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Components\Button.cs" />
     <Compile Include="Components\Screens\MainMenuScreen.cs" />

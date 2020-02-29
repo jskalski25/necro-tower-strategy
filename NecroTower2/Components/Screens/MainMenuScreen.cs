@@ -23,7 +23,8 @@ namespace NecroTower2.Components.Screens
 
         private void Button_Click(object sender, EventArgs e)
         {
-            game.Close();
+            var screen = new GameScreen(textures, game);
+            game.SetScreen(screen);
         }
     }
 }

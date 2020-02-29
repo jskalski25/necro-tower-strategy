@@ -20,17 +20,13 @@ namespace NecroTower2.Components
         public Button(Screen screen)
         {
             screen.Render += Render;
-            screen.Update += Update;
+            screen.MouseDown += MouseDown;
         }
 
-        private void Update(object sender, FrameEventArgs e)
+        private void MouseDown(object sender, MouseEventArgs e)
         {
-            var mouseState = Mouse.GetCursorState();
-            var window = sender as NativeWindow;
-            var mouse = new Point(mouseState.X, mouseState.Y);
-            mouse = window.PointToClient(mouse);
-            var rectangle = new Rectangle(0, 0, (int)Background.Width, (int)Background.Height);
-            if (rectangle.Contains(mouse) && mouseState.LeftButton == ButtonState.Pressed) Click?.Invoke(this, EventArgs.Empty);
+            var rect = new Rectangle(0, 0, (int)Background.Width, (int)Background.Height);
+            if (rect.Contains(e.Position)) Click?.Invoke(this, e);
         }
 
         private void Render(object sender, FrameEventArgs e)
