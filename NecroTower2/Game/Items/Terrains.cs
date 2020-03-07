@@ -13,7 +13,7 @@ namespace NecroTower2.Game.Items
 
         public static void Initialize(TextureManager textures)
         {
-            Grass = new Terrain(textures.Load(""));
+            Grass = new Terrain(textures.Load("Textures/test.png"));
         }
     }
 }

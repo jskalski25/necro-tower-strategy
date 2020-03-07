@@ -10,12 +10,10 @@ namespace NecroTower2.Game.Items
     internal static class Buildings
     {
         public static Building Tower;
-        public static Building Cemetary;
 
         public static void Initialize(TextureManager textures)
         {
-            Tower = new Building(textures.Load(""), 10);
-            Cemetary = new Building(textures.Load(""), 10);
+            Tower = new Building(textures.Load("Textures/test.png"), 10);
         }
     }
 }

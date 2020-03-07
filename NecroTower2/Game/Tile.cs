@@ -10,11 +10,17 @@ namespace NecroTower2.Game
     {
         private Terrain terrain;
         private List<Unit> units;
-        private Building building;
 
-        public Tile(Terrain terrain)
+        public Building Building;
+
+        public int X;
+        public int Y;
+
+        public Tile(Terrain terrain, int x, int y)
         {
             this.terrain = terrain;
+            X = x;
+            Y = y;
             units = new List<Unit>();
         }
     }

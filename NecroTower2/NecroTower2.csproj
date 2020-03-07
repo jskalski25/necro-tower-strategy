@@ -54,6 +54,7 @@
     <Compile Include="Game\Items\Buildings.cs" />
     <Compile Include="Game\Items\Terrains.cs" />
     <Compile Include="Game\Map.cs" />
+    <Compile Include="Game\Items\MapGen.cs" />
     <Compile Include="Game\Terrain.cs" />
     <Compile Include="Game\Tile.cs" />
     <Compile Include="Game\Unit.cs" />
