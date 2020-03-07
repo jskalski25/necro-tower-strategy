@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NecroTower2.Game;
 using NecroTower2.Game.Items;
+using OpenTK.Input;
 
 namespace NecroTower2.Components.Screens
 {
@@ -16,6 +17,12 @@ namespace NecroTower2.Components.Screens
         public PauseScreen(TextureManager textures, NecroTower2 game, Screen screen) : base(textures, game)
         {
             prevScreen = screen;
+        }
+
+        public override void OnKeyDown(object sender, KeyboardKeyEventArgs e)
+        {
+            if (e.Key == Key.Escape) OnUnpause();
+            base.OnKeyDown(sender, e);
         }
 
         private void OnUnpause()

@@ -52,6 +52,12 @@ namespace NecroTower2
             base.OnLoad(e);
         }
 
+        protected override void OnKeyDown(KeyboardKeyEventArgs e)
+        {
+            screen.OnKeyDown(this, e);
+            base.OnKeyDown(e);
+        }
+
         protected override void OnMouseMove(MouseMoveEventArgs e)
         {
             screen.OnMouseMove(this, e);

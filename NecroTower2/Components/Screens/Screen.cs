@@ -16,8 +16,9 @@ namespace NecroTower2.Components.Screens
 
         public event EventHandler<FrameEventArgs> RenderFrame;
         public event EventHandler<FrameEventArgs> UpdateFrame;
-        public event EventHandler<MouseEventArgs> MouseMove;
-        public event EventHandler<MouseEventArgs> MouseDown;
+        public event EventHandler<MouseMoveEventArgs> MouseMove;
+        public event EventHandler<MouseButtonEventArgs> MouseDown;
+        public event EventHandler<KeyboardKeyEventArgs> KeyDown;
 
         public Screen(TextureManager textures, NecroTower2 game)
         {
@@ -35,14 +36,19 @@ namespace NecroTower2.Components.Screens
             UpdateFrame?.Invoke(this, e);
         }
 
-        internal void OnMouseMove(object sender, MouseMoveEventArgs e)
+        public virtual void OnMouseMove(object sender, MouseMoveEventArgs e)
         {
             MouseMove?.Invoke(this, e);
         }
 
-        internal void OnMouseDown(object sender, MouseButtonEventArgs e)
+        public virtual void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             MouseDown?.Invoke(this, e);
+        }
+
+        public virtual void OnKeyDown(object sender, KeyboardKeyEventArgs e)
+        {
+            KeyDown?.Invoke(this, e);
         }
     }
 }
