@@ -14,6 +14,8 @@ namespace NecroTower2.Components.Screens
         protected TextureManager textures;
         protected NecroTower2 game;
 
+        public string Title;
+
         public event EventHandler<FrameEventArgs> RenderFrame;
         public event EventHandler<FrameEventArgs> UpdateFrame;
         public event EventHandler<MouseMoveEventArgs> MouseMove;

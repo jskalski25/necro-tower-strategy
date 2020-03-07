@@ -28,6 +28,7 @@ namespace NecroTower2
         public void SetScreen(Screen screen)
         {
             this.screen = screen;
+            if (screen.Title != null) Title = screen.Title;  
         }
 
         protected override void OnLoad(EventArgs e)
@@ -47,7 +48,7 @@ namespace NecroTower2
             shader.SetProjection(Matrix4.CreateOrthographicOffCenter(0.0f, Width, Height, 0.0f, -1.0f, 1.0f));
             shader.UpdateProjection();
 
-            screen = new MainMenuScreen(textures, this);
+            SetScreen(new MainMenuScreen(textures, this));
 
             base.OnLoad(e);
         }

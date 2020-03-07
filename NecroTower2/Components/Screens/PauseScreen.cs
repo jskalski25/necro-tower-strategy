@@ -16,6 +16,8 @@ namespace NecroTower2.Components.Screens
 
         public PauseScreen(TextureManager textures, NecroTower2 game, Screen screen) : base(textures, game)
         {
+            Title = "Paused";
+
             prevScreen = screen;
         }
 

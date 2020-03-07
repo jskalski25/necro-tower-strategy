@@ -17,6 +17,8 @@ namespace NecroTower2.Components.Screens
 
         public GameScreen(TextureManager textures, NecroTower2 game) : base(textures, game)
         {
+            Title = "Playing";
+
             BuildingTypes.Initialize(textures);
             TerrainTypes.Initialize(textures);
             UnitTypes.Initialize(textures);
