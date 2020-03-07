@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace NecroTower2.Game.Items
 {
-    internal static class MapGen
+    internal static class MapGenerator
     {
         public static Map Default()
         {
-            var map = new Map(Terrains.Grass, 11);
-            map.TileAt(1, 1).Building = new Building(Buildings.Tower);
-            map.TileAt(9, 9).Building = new Building(Buildings.Tower);
+            var map = new Map(TerrainTypes.Grass, 11);
+            map.TileAt(1, 1).Building = new Building(BuildingTypes.Tower);
+            map.TileAt(9, 9).Building = new Building(BuildingTypes.Tower);
             return map;
         }
     }

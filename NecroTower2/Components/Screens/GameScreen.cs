@@ -15,9 +15,9 @@ namespace NecroTower2.Components.Screens
 
         public GameScreen(TextureManager textures, NecroTower2 game) : base(textures, game)
         {
-            Buildings.Initialize(textures);
-            Terrains.Initialize(textures);
-            Units.Initialize(textures);
+            BuildingTypes.Initialize(textures);
+            TerrainTypes.Initialize(textures);
+            UnitTypes.Initialize(textures);
 
             pauseScreen = new PauseScreen(textures, game, this);
         }

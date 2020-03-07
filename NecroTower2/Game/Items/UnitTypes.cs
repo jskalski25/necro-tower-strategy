@@ -7,13 +7,15 @@ using NecroTower2.Graphics;
 
 namespace NecroTower2.Game.Items
 {
-    internal static class Terrains
+    internal static class UnitTypes
     {
-        public static Terrain Grass;
+        public static Unit Zombie;
+        public static Unit Skeleton;
 
         public static void Initialize(TextureManager textures)
         {
-            Grass = new Terrain(textures.Load("Textures/test.png"));
+            Zombie = new Unit(textures.Load("Textures/test.png"), 10, 10);
+            Skeleton = new Unit(textures.Load("Textures/test.png"), 10, 10);
         }
     }
 }
