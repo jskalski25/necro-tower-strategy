@@ -8,19 +8,26 @@ namespace NecroTower2.Graphics
 {
     internal class TextureManager : IDisposable
     {
-        List<Texture2D> textures;
+        private List<Texture> textures;
 
         public TextureManager()
         {
-            textures = new List<Texture2D>();
+            textures = new List<Texture>();
         }
 
-        public Texture2D LoadTexture(string path)
+        public Texture Load(string path)
         {
-            var texture = new Texture2D(path);
+            var texture = new Texture(path);
             textures.Add(texture);
             return texture;
         }
+
+        //public Texture Duplicate(Texture texture)
+        //{
+        //    var newTexture = new Texture(texture);
+        //    textures.Add(newTexture);
+        //    return newTexture;
+        //}
 
         private bool disposedValue = false;
 

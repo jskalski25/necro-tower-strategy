@@ -10,7 +10,7 @@ namespace NecroTower2
     {
         private static void Main(string[] args)
         {
-            using (var game = new Game())
+            using (var game = new NecroTower2())
             {
                 game.Run();
             }

@@ -13,25 +13,48 @@ namespace NecroTower2.Components
 {
     internal class Button
     {
-        public Texture2D Background;
+        public Texture Background;
 
         public event EventHandler Click;
 
-        public Button(Screen screen)
+        public RectangleF BoundingBox;
+
+        public float X { get => BoundingBox.X; set => BoundingBox.X = value; }
+        public float Y { get => BoundingBox.Y; set => BoundingBox.Y = value; }
+        public float Width { get => BoundingBox.Width; set => BoundingBox.Width = value; }
+        public float Height { get => BoundingBox.Height; set => BoundingBox.Height = value; }
+
+        public Button(Screen screen, Texture texture, int x, int y, int w, int h)
         {
-            screen.Render += Render;
+            InitEvents(screen);
+
+            X = x;
+            Y = y;
+            Width = w;
+            Height = h;
+            Background = texture;
+        }
+
+        public Button(Screen screen, Texture texture, int x, int y) : this(screen, texture, x, y, 0, 0)
+        {
+            Width = texture.Width;
+            Height = texture.Height;
+        }
+
+        private void InitEvents(Screen screen)
+        {
+            screen.RenderFrame += Render;
             screen.MouseDown += MouseDown;
         }
 
         private void MouseDown(object sender, MouseEventArgs e)
         {
-            var rect = new Rectangle(0, 0, (int)Background.Width, (int)Background.Height);
-            if (rect.Contains(e.Position)) Click?.Invoke(this, e);
+            if (BoundingBox.Contains(e.Position)) Click?.Invoke(this, e);
         }
 
         private void Render(object sender, FrameEventArgs e)
         {
-            Background?.Render(0.0f, 0.0f);
+            Background?.Render(BoundingBox);
         }
     }
 }

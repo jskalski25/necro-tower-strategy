@@ -13,14 +13,14 @@ using OpenTK.Input;
 
 namespace NecroTower2
 {
-    internal class Game : GameWindow
+    internal class NecroTower2 : GameWindow
     {
         private Shader shader;
         private Screen screen;
 
         private TextureManager textures;
 
-        public Game()
+        public NecroTower2()
         {
             Title = "Hello, World!";
         }
@@ -39,7 +39,7 @@ namespace NecroTower2
             shader = new Shader("Graphics/GLSL/shader.vert", "Graphics/GLSL/shader.frag");
             shader.Bind();
 
-            Texture2D.SetShader(shader);
+            Texture.SetShader(shader);
 
             shader.SetModelview(Matrix4.Identity);
             shader.UpdateModelview();
@@ -66,7 +66,7 @@ namespace NecroTower2
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
-            screen.OnUpdate(this, e);
+            screen.OnUpdateFrame(this, e);
             base.OnUpdateFrame(e);
         }
 
@@ -74,7 +74,7 @@ namespace NecroTower2
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            screen.OnRender(this, e);
+            screen.OnRenderFrame(this, e);
 
             Context.SwapBuffers();
             base.OnRenderFrame(e);

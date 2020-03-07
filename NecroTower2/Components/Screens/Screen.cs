@@ -12,28 +12,27 @@ namespace NecroTower2.Components.Screens
     internal class Screen
     {
         protected TextureManager textures;
-        protected Game game;
+        protected NecroTower2 game;
 
-        public event EventHandler<FrameEventArgs> Render;
-        public event EventHandler<FrameEventArgs> Update;
-
+        public event EventHandler<FrameEventArgs> RenderFrame;
+        public event EventHandler<FrameEventArgs> UpdateFrame;
         public event EventHandler<MouseEventArgs> MouseMove;
         public event EventHandler<MouseEventArgs> MouseDown;
 
-        public Screen(TextureManager textures, Game game)
+        public Screen(TextureManager textures, NecroTower2 game)
         {
             this.textures = textures;
             this.game = game;
         }
 
-        public virtual void OnRender(object sender, FrameEventArgs e)
+        public virtual void OnRenderFrame(object sender, FrameEventArgs e)
         {
-            Render?.Invoke(this, e);
+            RenderFrame?.Invoke(this, e);
         }
 
-        public virtual void OnUpdate(object sender, FrameEventArgs e)
+        public virtual void OnUpdateFrame(object sender, FrameEventArgs e)
         {
-            Update?.Invoke(this, e);
+            UpdateFrame?.Invoke(this, e);
         }
 
         internal void OnMouseMove(object sender, MouseMoveEventArgs e)

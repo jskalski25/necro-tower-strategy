@@ -11,12 +11,9 @@ namespace NecroTower2.Components.Screens
     {
         private Button button;
 
-        public MainMenuScreen(TextureManager textures, Game game) : base(textures, game)
+        public MainMenuScreen(TextureManager textures, NecroTower2 game) : base(textures, game)
         {
-            button = new Button(this)
-            {
-                Background = textures.LoadTexture("Textures/test.png")
-            };
+            button = new Button(this, textures.Load("Textures/test.png"), 50, 100, 500, 200);
 
             button.Click += Button_Click;
         }

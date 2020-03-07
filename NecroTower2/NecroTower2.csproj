@@ -47,13 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Screens\PauseScreen.cs" />
     <Compile Include="Components\Screens\GameScreen.cs" />
-    <Compile Include="Game.cs" />
+    <Compile Include="Game\Building.cs" />
+    <Compile Include="Game\Faction.cs" />
+    <Compile Include="Game\Items\Buildings.cs" />
+    <Compile Include="Game\Items\Terrains.cs" />
+    <Compile Include="Game\Map.cs" />
+    <Compile Include="Game\Terrain.cs" />
+    <Compile Include="Game\Tile.cs" />
+    <Compile Include="Game\Unit.cs" />
+    <Compile Include="Game\Items\Units.cs" />
+    <Compile Include="NecroTower2.cs" />
     <Compile Include="Components\Button.cs" />
     <Compile Include="Components\Screens\MainMenuScreen.cs" />
     <Compile Include="Components\Screens\Screen.cs" />
     <Compile Include="Graphics\Shader.cs" />
-    <Compile Include="Graphics\Texture2D.cs" />
+    <Compile Include="Graphics\Texture.cs" />
     <Compile Include="Graphics\TextureManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

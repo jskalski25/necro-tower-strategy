@@ -11,7 +11,7 @@ using OpenTK;
 
 namespace NecroTower2.Graphics
 {
-    internal class Texture2D : IDisposable
+    internal class Texture : IDisposable
     {
         private int textureID;
 
@@ -22,7 +22,7 @@ namespace NecroTower2.Graphics
         public float Width;
         public float Height;
 
-        public Texture2D(string path)
+        public Texture(string path)
         {
             textureID = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, textureID);
@@ -105,19 +105,38 @@ namespace NecroTower2.Graphics
 
         public static void SetShader(Shader shader)
         {
-            Texture2D.shader = shader;
+            Texture.shader = shader;
         }
 
-        public void Render(float x, float y)
+        public void Render(float x, float y, float width, float height)
         {
             shader.Bind();
+
             shader.SetModelview(Matrix4.Identity);
-            shader.MultiplyModelview(Matrix4.CreateTranslation(x, y, 0));
+
+            var translationMatrix = Matrix4.CreateTranslation(x, y, 0);
+            shader.MultiplyModelview(translationMatrix);
+
+            var scaleX = width / Width;
+            var scaleY = height / Height;
+            var scaleMatrix = Matrix4.CreateScale(scaleX, scaleY, 1);
+            shader.MultiplyModelview(scaleMatrix);
+
             shader.UpdateModelview();
 
             GL.BindTexture(TextureTarget.Texture2D, textureID);
             GL.BindVertexArray(vertexArrayObjectID);
             GL.DrawElements(PrimitiveType.TriangleFan, 4, DrawElementsType.UnsignedInt, 0);
+        }
+
+        public void Render(float x, float y)
+        {
+            Render(x, y, Width, Height);
+        }
+
+        public void Render(RectangleF target)
+        {
+            Render(target.X, target.Y, target.Width, target.Height);
         }
 
         private bool disposedValue = false;
@@ -133,7 +152,7 @@ namespace NecroTower2.Graphics
             }
         }
 
-        ~Texture2D()
+        ~Texture()
         {
             Dispose(false);
         }
