@@ -10,19 +10,22 @@ namespace NecroTower2.Game
     internal class Building
     {
         private Texture texture;
-
+        private Faction faction;
         private int health;
 
-        public Building(Texture texture, int health)
+        public Building(Texture texture, int health, Faction faction = null)
         {
             this.texture = texture;
+            this.faction = faction;
             this.health = health;
         }
 
-        public Building(Building building)
+        public Building(Building building, Faction faction) : this(building.texture, building.health, faction)
         {
-            texture = building.texture;
-            health = building.health;
+        }
+
+        public Building(Building building) : this(building, building.faction)
+        {
         }
     }
 }
