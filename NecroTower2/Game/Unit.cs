@@ -20,6 +20,7 @@ namespace NecroTower2.Game
             this.texture = texture;
             this.health = health;
             this.damage = damage;
+            this.faction = faction;
         }
 
         public Unit(Unit unit, Faction faction) : this(unit.texture, unit.health, unit.damage, faction)

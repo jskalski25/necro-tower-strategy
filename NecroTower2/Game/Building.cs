@@ -16,8 +16,8 @@ namespace NecroTower2.Game
         public Building(Texture texture, int health, Faction faction = null)
         {
             this.texture = texture;
-            this.faction = faction;
             this.health = health;
+            this.faction = faction;
         }
 
         public Building(Building building, Faction faction) : this(building.texture, building.health, faction)
