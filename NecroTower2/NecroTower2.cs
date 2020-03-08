@@ -23,6 +23,8 @@ namespace NecroTower2
         public NecroTower2()
         {
             Title = "Hello, World!";
+            Width = 800;
+            Height = 600;
         }
 
         public void SetScreen(Screen screen)
