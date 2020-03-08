@@ -22,12 +22,12 @@ namespace NecroTower2.Graphics
             return texture;
         }
 
-        //public Texture Duplicate(Texture texture)
-        //{
-        //    var newTexture = new Texture(texture);
-        //    textures.Add(newTexture);
-        //    return newTexture;
-        //}
+        public Texture Duplicate(Texture texture)
+        {
+            var newTexture = new Texture(texture);
+            textures.Add(newTexture);
+            return newTexture;
+        }
 
         private bool disposedValue = false;
 

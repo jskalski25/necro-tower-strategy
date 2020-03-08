@@ -22,6 +22,62 @@ namespace NecroTower2.Graphics
         public float Width;
         public float Height;
 
+        public Texture(Texture original) : this(original.GetImage())
+        {
+        }
+
+        public Bitmap GetImage()
+        {
+            var image = new Bitmap((int)Width, (int)Height);
+            var data = image.LockBits(
+                new Rectangle(0, 0, image.Width, image.Height),
+                ImageLockMode.WriteOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            GL.BindTexture(TextureTarget.Texture2D, textureID);
+            GL.GetTexImage(
+                TextureTarget.Texture2D,
+                0,
+                PixelFormat.Bgra,
+                PixelType.UnsignedByte,
+                data.Scan0);
+
+            image.UnlockBits(data);
+            return image;
+        }
+
+        public Texture(Bitmap image)
+        {
+            textureID = GL.GenTexture();
+            GL.BindTexture(TextureTarget.Texture2D, textureID);
+
+            Width = image.Width;
+            Height = image.Height;
+
+            var data = image.LockBits(
+                new Rectangle(0, 0, image.Width, image.Height),
+                ImageLockMode.ReadOnly,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            GL.TexImage2D(
+                TextureTarget.Texture2D,
+                0,
+                PixelInternalFormat.Rgba,
+                image.Width,
+                image.Height,
+                0,
+                PixelFormat.Bgra,
+                PixelType.UnsignedByte,
+                data.Scan0);
+
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+
+            GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
+
+            InitVertexArrays();
+        }
+
         public Texture(string path)
         {
             textureID = GL.GenTexture();
