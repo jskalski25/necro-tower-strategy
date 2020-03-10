@@ -32,7 +32,7 @@ namespace NecroTower2.Game
             return tiles[index];
         }
 
-        public void Render(int x, int y)
+        public void Render(float x, float y)
         {
             foreach(var tile in tiles)
             {

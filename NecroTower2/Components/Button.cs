@@ -14,6 +14,7 @@ namespace NecroTower2.Components
     internal class Button
     {
         public Texture Background;
+        public Texture TextTexture;
 
         public event EventHandler Click;
 
@@ -41,6 +42,15 @@ namespace NecroTower2.Components
             Height = texture.Height;
         }
 
+        public void AddText(TextureManager textures, string text, float size)
+        {
+            using (var font = new Font(FontFamily.GenericSansSerif, size))
+            {
+                var texture = textures.FromText(400, 400, text, font, Brushes.Black);
+                TextTexture = texture;
+            }
+        }
+
         private void InitEvents(Screen screen)
         {
             screen.RenderFrame += Render;
@@ -55,6 +65,7 @@ namespace NecroTower2.Components
         private void Render(object sender, FrameEventArgs e)
         {
             Background?.Render(BoundingBox);
+            TextTexture?.Render(BoundingBox);
         }
     }
 }

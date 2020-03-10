@@ -8,6 +8,7 @@ using NecroTower2.Game;
 using NecroTower2.Game.Items;
 using OpenTK.Input;
 using OpenTK;
+using System.Drawing;
 
 namespace NecroTower2.Components.Screens
 {
@@ -15,6 +16,8 @@ namespace NecroTower2.Components.Screens
     {
         private readonly Screen pauseScreen;
         private readonly Map map;
+
+        PointF camera;
 
         public GameScreen(TextureManager textures, NecroTower2 game) : base(textures, game)
         {
@@ -26,11 +29,22 @@ namespace NecroTower2.Components.Screens
 
             pauseScreen = new PauseScreen(textures, game, this);
             map = MapGenerator.Default();
+            camera = new PointF();
+        }
+
+        public override void OnUpdateFrame(object sender, FrameEventArgs e)
+        {
+            var keyboard = Keyboard.GetState();
+            if (keyboard.IsKeyDown(Key.W)) camera.Y += 1f;
+            if (keyboard.IsKeyDown(Key.S)) camera.Y -= 1f;
+            if (keyboard.IsKeyDown(Key.A)) camera.X += 1f;
+            if (keyboard.IsKeyDown(Key.D)) camera.X -= 1f;
+            base.OnUpdateFrame(sender, e);
         }
 
         public override void OnRenderFrame(object sender, FrameEventArgs e)
         {
-            map.Render(0, 0);
+            map.Render(camera.X, camera.Y);
             base.OnRenderFrame(sender, e);
         }
 

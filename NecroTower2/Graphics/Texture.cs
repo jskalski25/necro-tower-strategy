@@ -181,6 +181,11 @@ namespace NecroTower2.Graphics
             Render(x, y, Width, Height);
         }
 
+        public void Render(PointF point)
+        {
+            Render(point.X, point.Y);
+        }
+
         public void Render(RectangleF target)
         {
             Render(target.X, target.Y, target.Width, target.Height);

@@ -13,6 +13,9 @@ namespace NecroTower2.Game
         private Faction faction;
         private int health;
 
+        public float Height { get => texture.Height; }
+        public float Width { get => texture.Width; }
+
         public Building(Texture texture, int health, Faction faction = null)
         {
             this.texture = texture;
@@ -26,6 +29,11 @@ namespace NecroTower2.Game
 
         public Building(Building building) : this(building, building.faction)
         {
+        }
+
+        internal void Render(float x, float y)
+        {
+            texture.Render(x, y);
         }
     }
 }
