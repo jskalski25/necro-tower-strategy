@@ -31,5 +31,13 @@ namespace NecroTower2.Game
             int index = size * y + x;
             return tiles[index];
         }
+
+        public void Render(int x, int y)
+        {
+            foreach(var tile in tiles)
+            {
+                tile.Render(x, y);
+            }
+        }
     }
 }

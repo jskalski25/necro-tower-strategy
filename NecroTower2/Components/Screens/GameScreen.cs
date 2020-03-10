@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NecroTower2.Game;
 using NecroTower2.Game.Items;
 using OpenTK.Input;
+using OpenTK;
 
 namespace NecroTower2.Components.Screens
 {
@@ -25,6 +26,12 @@ namespace NecroTower2.Components.Screens
 
             pauseScreen = new PauseScreen(textures, game, this);
             map = MapGenerator.Default();
+        }
+
+        public override void OnRenderFrame(object sender, FrameEventArgs e)
+        {
+            map.Render(0, 0);
+            base.OnRenderFrame(sender, e);
         }
 
         public override void OnKeyDown(object sender, KeyboardKeyEventArgs e)

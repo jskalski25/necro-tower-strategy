@@ -14,8 +14,8 @@ namespace NecroTower2.Game.Items
 
         public static void Initialize(TextureManager textures)
         {
-            Zombie = new Unit(textures.Load("Textures/test.png"), 10, 10);
-            Skeleton = new Unit(textures.Load("Textures/test.png"), 10, 10);
+            Zombie = new Unit(textures.FromFile("Textures/test.png"), 10, 10);
+            Skeleton = new Unit(textures.FromFile("Textures/test.png"), 10, 10);
         }
     }
 }

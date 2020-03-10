@@ -11,9 +11,17 @@ namespace NecroTower2.Game
     {
         private Texture texture;
 
+        public float Width { get => texture.Width; }
+        public float Height { get => texture.Height; }
+
         public Terrain(Texture texture)
         {
             this.texture = texture;
+        }
+
+        public void Render(float x, float y)
+        {
+            texture.Render(x, y);
         }
     }
 }

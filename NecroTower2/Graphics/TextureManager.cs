@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace NecroTower2.Graphics
 {
@@ -15,11 +16,28 @@ namespace NecroTower2.Graphics
             textures = new List<Texture>();
         }
 
-        public Texture Load(string path)
+        public Texture FromFile(string path)
         {
             var texture = new Texture(path);
             textures.Add(texture);
             return texture;
+        }
+
+        public Texture FromText(int width, int height, string text, Font font, Brush brush)
+        {
+            using (var image = new Bitmap(width, height))
+            {
+                using (var gfx = System.Drawing.Graphics.FromImage(image))
+                {
+                    var size = gfx.MeasureString(text, font);
+                    var offsetX = (width - size.Width) / 2;
+                    var offsetY = (width - size.Height) / 2;
+                    gfx.DrawString(text, font, brush, offsetX, offsetY);
+                }
+                var texture = new Texture(image);
+                textures.Add(texture);
+                return texture;
+            }
         }
 
         public Texture Duplicate(Texture texture)

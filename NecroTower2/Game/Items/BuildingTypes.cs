@@ -13,7 +13,7 @@ namespace NecroTower2.Game.Items
 
         public static void Initialize(TextureManager textures)
         {
-            Tower = new Building(textures.Load("Textures/test.png"), 10);
+            Tower = new Building(textures.FromFile("Textures/test.png"), 10);
         }
     }
 }
