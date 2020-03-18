@@ -10,6 +10,7 @@ using System.Drawing;
 using NecroTower2.Graphics;
 using NecroTower2.Components.Screens;
 using OpenTK.Input;
+using MapMockup1.ConfigManager;
 
 namespace NecroTower2
 {
@@ -20,11 +21,17 @@ namespace NecroTower2
 
         private TextureManager textures;
 
+        private Config Config;
+
         public NecroTower2()
         {
             Title = "Hello, World!";
-            Width = 800;
-            Height = 600;
+
+            Config = new Config();
+            Config.Initialize();
+
+            Width = Config.UserSettings.Width;
+            Height = Config.UserSettings.Height;
         }
 
         public void SetScreen(Screen screen)

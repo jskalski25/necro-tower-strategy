@@ -49,6 +49,9 @@
   <ItemGroup>
     <Compile Include="Components\Screens\PauseScreen.cs" />
     <Compile Include="Components\Screens\GameScreen.cs" />
+    <Compile Include="ConfigManager\Config.cs" />
+    <Compile Include="ConfigManager\ConfigCategories\UserSettings.cs" />
+    <Compile Include="ConfigManager\XmlConverters.cs" />
     <Compile Include="Game\Building.cs" />
     <Compile Include="Game\Faction.cs" />
     <Compile Include="Game\Items\BuildingTypes.cs" />
