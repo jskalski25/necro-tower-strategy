@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using NecroTower2.Game.Items;
 
 namespace NecroTower2.Game
 {
@@ -26,10 +28,17 @@ namespace NecroTower2.Game
             }
         }
 
-        public Tile TileAt(int x, int y)
+        public Tile GetTile(int x, int y)
         {
             int index = size * y + x;
             return tiles[index];
+        }
+
+        public Tile TileAt(float x, float y)
+        {
+            PointF point = new PointF(x, y);
+            MapHelper.ScreenToMap(point, TerrainTypes.Grass.Size, out Point coords);
+            return GetTile(coords.X, coords.Y);
         }
 
         public void Render(float x, float y)
